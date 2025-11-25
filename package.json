@@ -17,8 +17,9 @@
     "generate": "doppler run -- prisma generate --schema=src/prisma/schema.prisma",
     "push": "doppler run -- prisma db push --schema=src/prisma/schema.prisma",
     "studio": "doppler run -- prisma studio --schema=src/prisma/schema.prisma",
+    "studio:local": "prisma studio --schema=src/prisma/schema.prisma",
     "all": "doppler run -- npx prisma migrate dev --schema=src/prisma/schema.prisma && concurrently \"doppler run -- npm run dev\" \"doppler run -- npm run studio\"",
-    "all:local": "npx prisma generate --schema=src/prisma/schema.prisma && npx prisma db push --schema=src/prisma/schema.prisma && concurrently \"npm run dev\" \"npm run studio\""
+    "all:local": "npx prisma migrate dev --schema=src/prisma/schema.prisma && concurrently \"npm run dev\" \"npm run studio:local\""
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

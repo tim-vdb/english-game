@@ -25,39 +25,6 @@ export default function DesktopNavbar() {
       <div className="hidden md:block">
         <div className="ml-10 flex items-baseline space-x-4">
           <Link
-            href="/features"
-            className={cn(
-              linksClasses.base,
-              isActive("/features")
-                ? linksClasses.isActive
-                : linksClasses.notActive
-            )}
-          >
-            Features
-          </Link>
-          <Link
-            href="/solution"
-            className={cn(
-              linksClasses.base,
-              isActive("/solution")
-                ? linksClasses.isActive
-                : linksClasses.notActive
-            )}
-          >
-            Solution
-          </Link>
-          <Link
-            href="/pricing"
-            className={cn(
-              linksClasses.base,
-              isActive("/pricing")
-                ? linksClasses.isActive
-                : linksClasses.notActive
-            )}
-          >
-            Pricing
-          </Link>
-          <Link
             href="/about"
             className={cn(
               linksClasses.base,
@@ -89,28 +56,6 @@ export default function DesktopNavbar() {
             )}
           >
             Our Team
-          </Link>
-          <Link
-            href="/Docs"
-            className={cn(
-              linksClasses.base,
-              isActive("/Docs")
-                ? linksClasses.isActive
-                : linksClasses.notActive
-            )}
-          >
-            Docs
-          </Link>
-          <Link
-            href="/blog"
-            className={cn(
-              linksClasses.base,
-              isActive("/blog")
-                ? linksClasses.isActive
-                : linksClasses.notActive
-            )}
-          >
-            Blog
           </Link>
         </div>
       </div>

@@ -7,21 +7,6 @@ export default function FooterNavbar() {
                 <h3 className="text-lg">Company</h3>
                 <ul className="space-y-4 ">
                     <li>
-                        <Link href="/features" className="transition">
-                            Features
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/solution" className="transition">
-                            Solution
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/pricing" className="transition">
-                            Pricing
-                        </Link>
-                    </li>
-                    <li>
                         <Link href="/about" className="transition">
                             About
                         </Link>
@@ -36,32 +21,27 @@ export default function FooterNavbar() {
                             Our Team
                         </Link>
                     </li>
-                    <li>
-                        <Link href="/blog" className="transition">
-                            Blog
-                        </Link>
-                    </li>
                 </ul>
             </div>
             <div className="flex flex-col">
                 <h3 className="text-lg">Resources</h3>
                 <ul className="space-y-4 ">
                     <li>
-                        <Link href="/docs" className="transition">
-                            Docs
+                        <Link href="/rules" className="transition">
+                            Game Rules
                         </Link>
                     </li>
                     <li>
-                        <Link href="/changelog" className="transition">
-                            Changelog
+                        z<Link href="/design" className="transition">
+                            Game Design
                         </Link>
                     </li>
                     <li>
                         <Link
-                            href="/guides"
+                            href="/trailer"
                             className="transition"
                         >
-                            Guides
+                            Video Trailer
                         </Link>
                     </li>
                 </ul>

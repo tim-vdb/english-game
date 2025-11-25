@@ -42,36 +42,6 @@ export default function MobileNavbar({
     <nav className="md:hidden absolute top-full left-0 right-0 bg-white dark:bg-neutral-900 shadow-lg font-cooper">
       <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
         <Link
-          href="/features"
-          onClick={() => setMenuOpen(false)}
-          className={cn(
-            linksClasses.base,
-            isActive("/features") ? linksClasses.isActive : linksClasses.notActive
-          )}
-        >
-          Features
-        </Link>
-        <Link
-          href="/solution"
-          onClick={() => setMenuOpen(false)}
-          className={cn(
-            linksClasses.base,
-            isActive("/solution") ? linksClasses.isActive : linksClasses.notActive
-          )}
-        >
-          Solution
-        </Link>
-        <Link
-          href="/pricing"
-          onClick={() => setMenuOpen(false)}
-          className={cn(
-            linksClasses.base,
-            isActive("/pricing") ? linksClasses.isActive : linksClasses.notActive
-          )}
-        >
-          Pricing
-        </Link>
-        <Link
           href="/about"
           onClick={() => setMenuOpen(false)}
           className={cn(
@@ -102,26 +72,6 @@ export default function MobileNavbar({
           )}
         >
           Our Team
-        </Link>
-        <Link
-          href="/docs"
-          onClick={() => setMenuOpen(false)}
-          className={cn(
-            linksClasses.base,
-            isActive("/docs") ? linksClasses.isActive : linksClasses.notActive
-          )}
-        >
-          Docs
-        </Link>
-        <Link
-          href="/blog"
-          onClick={() => setMenuOpen(false)}
-          className={cn(
-            linksClasses.base,
-            isActive("/blog") ? linksClasses.isActive : linksClasses.notActive
-          )}
-        >
-          Blog
         </Link>
       </div>
     </nav>
