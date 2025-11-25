@@ -25,6 +25,8 @@ model User {
   blogs         Blog[]         @relation("BlogAuthor")
   registrations Registration[]
   sessions      Session[]
+  teamMembers   TeamMember[]   @relation("TeamMembers")
+  createdTeams  Team[]         @relation("CreatedTeams")
 
   @@map("user")
 }
@@ -33,6 +35,7 @@ enum Role {
   MEMBER
   CONTRIBUTOR
   ADMIN
+  GAME_MASTER
 }
 
 /// *
@@ -127,6 +130,8 @@ model Gallery {
   type       GalleryType @default(GALLERY)
   uploadedBy String
   createdAt  DateTime    @default(now())
+
+  @@map("gallery")
 }
 
 enum GalleryType {
@@ -158,4 +163,45 @@ model Newsletter {
   createdAt DateTime @default(now())
 
   @@map("newsletter")
+}
+
+model Team {
+  id        String       @id @default(cuid())
+  name      String
+  public    Boolean      @default(false)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  members   TeamMember[]
+  invites   TeamInvite[] // les liens d'invitation
+  creatorId String
+  creator   User         @relation("CreatedTeams", fields: [creatorId], references: [id])
+
+  @@map("team")
+}
+
+model TeamMember {
+  id     String @id @default(cuid())
+  teamId String
+  userId String
+  role   Role   @default(MEMBER) // ADMIN, MEMBER...
+  team   Team   @relation(fields: [teamId], references: [id])
+  user   User   @relation("TeamMembers", fields: [userId], references: [id])
+
+  @@map("team_member")
+}
+
+model TeamInvite {
+  id        String   @id @default(cuid())
+  teamId    String
+  token     String   @unique // ex: random 32 chars ou UUID v4
+  role      Role     @default(MEMBER)
+  expiresAt DateTime
+  used      Boolean  @default(false)
+  createdBy String // userId de l'admin qui a créé le lien
+  team      Team     @relation(fields: [teamId], references: [id])
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@index([teamId])
+  @@map("team_invite")
 }

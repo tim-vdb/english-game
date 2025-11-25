@@ -224,6 +224,33 @@ exports.Prisma.NewsletterScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TeamScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  public: 'public',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  creatorId: 'creatorId'
+};
+
+exports.Prisma.TeamMemberScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  userId: 'userId',
+  role: 'role'
+};
+
+exports.Prisma.TeamInviteScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  token: 'token',
+  role: 'role',
+  expiresAt: 'expiresAt',
+  used: 'used',
+  createdBy: 'createdBy',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -241,7 +268,8 @@ exports.Prisma.NullsOrder = {
 exports.Role = exports.$Enums.Role = {
   MEMBER: 'MEMBER',
   CONTRIBUTOR: 'CONTRIBUTOR',
-  ADMIN: 'ADMIN'
+  ADMIN: 'ADMIN',
+  GAME_MASTER: 'GAME_MASTER'
 };
 
 exports.GalleryType = exports.$Enums.GalleryType = {
@@ -258,7 +286,10 @@ exports.Prisma.ModelName = {
   Verification: 'Verification',
   Gallery: 'Gallery',
   Blog: 'Blog',
-  Newsletter: 'Newsletter'
+  Newsletter: 'Newsletter',
+  Team: 'Team',
+  TeamMember: 'TeamMember',
+  TeamInvite: 'TeamInvite'
 };
 
 /**
