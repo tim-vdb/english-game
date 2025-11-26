@@ -32,7 +32,7 @@ export default function FooterNavbar() {
                         </Link>
                     </li>
                     <li>
-                        z<Link href="/design" className="transition">
+                        <Link href="/design" className="transition">
                             Game Design
                         </Link>
                     </li>

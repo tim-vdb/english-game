@@ -26,7 +26,7 @@ export default function Header() {
                 <div className="mx-8 flex justify-between items-center h-full">
                     <Link href="/" className="shrink-0">
                         <Image
-                            src="/images/cassetete.jpg"
+                            src="/logo.svg"
                             alt="CHROM Logo"
                             width={100}
                             height={100}

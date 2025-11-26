@@ -1,153 +1,75 @@
 'use client'
-import { Logo } from '@/components/logo'
-import Link from 'next/link'
-import { useState } from 'react'
-import { Button } from '@/components/ui/button'
-import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
-const menuItems = [
-    { name: 'Features', href: '#' },
-    { name: 'Solution', href: '#' },
-    { name: 'Pricing', href: '#' },
-    { name: 'About', href: '#' },
-]
 
 export default function HeroSection() {
-    const [menuState, setMenuState] = useState(false)
-    return (
-        <>
-            <main>
-                <div
-                    aria-hidden
-                    className="z-2 absolute inset-0 isolate hidden opacity-50 contain-strict lg:block">
-                    <div className="w-140 h-320 -translate-y-87.5 absolute left-0 top-0 -rotate-45 rounded-full bg-[radial-gradient(68.54%_68.72%_at_55.02%_31.46%,hsla(0,0%,85%,.08)_0,hsla(0,0%,55%,.02)_50%,hsla(0,0%,45%,0)_80%)]" />
-                    <div className="h-320 absolute left-0 top-0 w-60 -rotate-45 rounded-full bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.06)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)] [translate:5%_-50%]" />
-                    <div className="h-320 -translate-y-87.5 absolute left-0 top-0 w-60 -rotate-45 bg-[radial-gradient(50%_50%_at_50%_50%,hsla(0,0%,85%,.04)_0,hsla(0,0%,45%,.02)_80%,transparent_100%)]" />
-                </div>
+  return (
+    <section className="bg-[#f3f2e3] text-[#7f2b13] py-20">
+      <div className="max-w-6xl mx-auto px-6 lg:px-12 grid gap-16 lg:grid-cols-2 items-center">
 
-                <section className="bg-muted/50 dark:bg-background overflow-hidden">
-                    <div className="relative mx-auto max-w-5xl px-6 pt-28 lg:pt-24">
-                        <div className="relative z-10 mx-auto max-w-2xl text-center">
-                            <h1 className="text-balance text-4xl font-semibold md:text-5xl lg:text-6xl">Chef's Blueprint</h1>
-                            <p className="text-muted-foreground mx-auto my-8 max-w-2xl text-xl">A escape game about Wireframes</p>
+        {/* LEFT TEXT */}
+        <div className="space-y-6 text-left">
+          <p className="text-xs uppercase tracking-[0.25em] text-[#ec672a] font-inter">
+            Serious game studio
+          </p>
 
-                            <Button
-                                asChild
-                                size="lg">
-                                <Link href="#">
-                                    <span className="btn-label">Get Ready</span>
-                                </Link>
-                            </Button>
-                        </div>
-                    </div>
+          <h1 className="font-cooper text-5xl leading-tight text-[#7f2b13] text-left">
+            Chef’s Blueprint,<br />
+            the experience that makes you love wireframes.
+          </h1>
 
-                    <div className="mx-auto 2xl:max-w-7xl">
-                        <div className="perspective-distant pl-8 lg:pl-44">
-                            <div className="lg:h-176 rotate-x-20 mask-b-from-55% mask-b-to-100% mask-r-from-75% skew-x-12 pl-6 pt-6">
-                                <Image
-                                    className="rounded-(--radius) border shadow-xl dark:hidden"
-                                    src="/card.png"
-                                    alt="Tailark hero section"
-                                    width={2880}
-                                    height={2074}
-                                />
-                                <Image
-                                    className="rounded-(--radius) hidden border shadow-xl dark:block"
-                                    src="/dark-card.webp"
-                                    alt="Tailark hero section"
-                                    width={2880}
-                                    height={2074}
-                                />
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <section className="dark:bg-background bg-muted/50 relative z-10 py-16">
-                    <div className="m-auto max-w-5xl px-6">
-                        <h2 className="text-center text-lg font-medium">Your favorite companies are our partners.</h2>
-                        <div className="mx-auto mt-20 flex max-w-4xl flex-wrap items-center justify-center gap-x-12 gap-y-8 sm:gap-x-16 sm:gap-y-12">
-                            <img
-                                className="h-5 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/nvidia.svg"
-                                alt="Nvidia Logo"
-                                height="20"
-                                width="auto"
-                            />
-                            <img
-                                className="h-4 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/column.svg"
-                                alt="Column Logo"
-                                height="16"
-                                width="auto"
-                            />
-                            <img
-                                className="h-4 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/github.svg"
-                                alt="GitHub Logo"
-                                height="16"
-                                width="auto"
-                            />
-                            <img
-                                className="h-5 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/nike.svg"
-                                alt="Nike Logo"
-                                height="20"
-                                width="auto"
-                            />
-                            <img
-                                className="h-4 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/laravel.svg"
-                                alt="Laravel Logo"
-                                height="16"
-                                width="auto"
-                            />
-                            <img
-                                className="h-7 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/lilly.svg"
-                                alt="Lilly Logo"
-                                height="28"
-                                width="auto"
-                            />
-                            <img
-                                className="h-5 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/lemonsqueezy.svg"
-                                alt="Lemon Squeezy Logo"
-                                height="20"
-                                width="auto"
-                            />
-                            <img
-                                className="h-6 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/openai.svg"
-                                alt="OpenAI Logo"
-                                height="24"
-                                width="auto"
-                            />
-                            <img
-                                className="h-4 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/tailwindcss.svg"
-                                alt="Tailwind CSS Logo"
-                                height="16"
-                                width="auto"
-                            />
-                            <img
-                                className="h-5 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/vercel.svg"
-                                alt="Vercel Logo"
-                                height="20"
-                                width="auto"
-                            />
-                            <img
-                                className="h-5 w-fit dark:invert"
-                                src="https://html.tailus.io/blocks/customers/zapier.svg"
-                                alt="Zapier Logo"
-                                height="20"
-                                width="auto"
-                            />
-                        </div>
-                    </div>
-                </section>
-            </main>
-        </>
-    )
+          <p className="text-lg text-[#7f2b13] font-inter">
+            Solve puzzles brigade-style, unlock UI components via QR codes,
+            and witness the live creation of a perfect wireframe for a demanding Lyon chef.
+          </p>
+
+          {/* BUTTONS */}
+          <div className="flex flex-wrap gap-4">
+            <Link
+              href="/about"
+              className="bg-[#ec672a] text-white border-2 border-[#7f2b13] rounded-full px-6 py-3 font-inter uppercase tracking-wide shadow-md hover:scale-[1.03] transition"
+            >
+              Discover the universe
+            </Link>
+
+            <Link
+              href="/contact"
+              className="bg-[#f3f2e3] text-[#ec672a] border-2 border-[#ec672a] rounded-full px-6 py-3 font-inter uppercase tracking-wide hover:bg-[#ec672a]/10 transition"
+            >
+              Book a demo
+            </Link>
+          </div>
+
+          {/* FEATURE LIST */}
+          <ul className="space-y-2 text-sm text-[#7f2b13] font-inter">
+            <li className="flex gap-2 items-center">
+              <span className="h-2 w-2 rounded-full bg-[#ec672a]" />
+              Narrative escape game inspired by haute cuisine
+            </li>
+            <li className="flex gap-2 items-center">
+              <span className="h-2 w-2 rounded-full bg-[#ec672a]" />
+              Wireframe methodology taught through puzzles
+            </li>
+            <li className="flex gap-2 items-center">
+              <span className="h-2 w-2 rounded-full bg-[#ec672a]" />
+              QR-powered add-on with live visual feedback
+            </li>
+          </ul>
+        </div>
+
+        {/* RIGHT: LOGO SIMPLE, SANS CARTE */}
+        <div className="flex justify-center lg:justify-end">
+          <Image
+            src="/logo.svg"
+            alt="Chef's Blueprint logo"
+            width={380}
+            height={380}
+            className="object-contain"
+          />
+        </div>
+
+      </div>
+    </section>
+  );
 }

@@ -243,7 +243,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Projet\\Next.js - React\\English-Game\\src\\generated\\prisma_client",
+      "value": "C:\\Users\\Gaye\\Downloads\\English Game\\src\\generated\\prisma_client",
       "fromEnvVar": null
     },
     "config": {
@@ -269,7 +269,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Projet\\Next.js - React\\English-Game\\src\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Gaye\\Downloads\\English Game\\src\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
