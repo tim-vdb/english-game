@@ -259,6 +259,8 @@ exports.Role = exports.$Enums.Role = {
   CONTRIBUTOR: 'CONTRIBUTOR',
   ADMIN: 'ADMIN',
   GAME_MASTER: 'GAME_MASTER'
+  ADMIN: 'ADMIN',
+  GAME_MASTER: 'GAME_MASTER'
 };
 
 exports.GalleryType = exports.$Enums.GalleryType = {
@@ -293,7 +295,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Projet\\Next.js - React\\English-Game\\src\\generated\\prisma_client",
+      "value": "E:\\Projet\\Next.js - React\\English-Game\\src\\generated\\prisma_client",
       "fromEnvVar": null
     },
     "config": {
@@ -319,7 +321,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Projet\\Next.js - React\\English-Game\\src\\prisma\\schema.prisma",
+    "sourceFilePath": "E:\\Projet\\Next.js - React\\English-Game\\src\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

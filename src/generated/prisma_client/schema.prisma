@@ -37,6 +37,7 @@ enum Role {
   CONTRIBUTOR
   ADMIN
   GAME_MASTER
+  GAME_MASTER
 }
 
 /// *
@@ -132,6 +133,7 @@ model Gallery {
   uploadedBy String
   createdAt  DateTime    @default(now())
 
+  @@map("gallery")
   @@map("gallery")
 }
 
