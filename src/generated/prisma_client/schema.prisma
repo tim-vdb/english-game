@@ -27,6 +27,7 @@ model User {
   sessions      Session[]
   teamMembers   TeamMember[]   @relation("TeamMembers")
   createdTeams  Team[]         @relation("CreatedTeams")
+  elements      Elements[]     @relation("UserElements")
 
   @@map("user")
 }
@@ -166,15 +167,15 @@ model Newsletter {
 }
 
 model Team {
-  id        String       @id @default(cuid())
-  name      String
-  public    Boolean      @default(false)
-  createdAt DateTime     @default(now())
-  updatedAt DateTime     @updatedAt
-  members   TeamMember[]
-  invites   TeamInvite[] // les liens d'invitation
-  creatorId String
-  creator   User         @relation("CreatedTeams", fields: [creatorId], references: [id])
+  id           String        @id @default(cuid())
+  name         String
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  members      TeamMember[]
+  invites      TeamInvite[] // les liens d'invitation
+  creatorId    String
+  creator      User          @relation("CreatedTeams", fields: [creatorId], references: [id])
+  gameSessions GameSession[]
 
   @@map("team")
 }
@@ -204,4 +205,33 @@ model TeamInvite {
   @@index([token])
   @@index([teamId])
   @@map("team_invite")
+}
+
+model GameSession {
+  id        String     @id @default(cuid())
+  teamId    String
+  team      Team       @relation(fields: [teamId], references: [id])
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+  elements  Elements[]
+
+  @@map("game_session")
+}
+
+model Elements {
+  id            String      @id @default(cuid())
+  name          String
+  description   String?
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+  active        Boolean     @default(false)
+  gameSessionId String
+  gameSession   GameSession @relation(fields: [gameSessionId], references: [id])
+  userId        String
+  user          User        @relation("UserElements", fields: [userId], references: [id])
+
+  @@unique([userId, gameSessionId, name])
+  @@index([userId])
+  @@index([gameSessionId])
+  @@map("elements")
 }

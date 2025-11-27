@@ -18,17 +18,20 @@ import { TeamsSafeAction } from '../server/teams.action'
 import z from 'zod'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Sheet, SheetContent, SheetHeader, SheetDescription, SheetTitle, SheetTrigger, SheetClose } from '@/components/ui/sheet'
+import { Sheet, SheetContent, SheetHeader, SheetDescription, SheetTitle, SheetTrigger } from '@/components/ui/sheet'
 import GetTeams from '../../getTeams/getTeams'
+import { useState } from 'react'
+import { cn } from '@/lib/utils'
+import { Plus } from 'lucide-react'
 
 export default function CreateTeam() {
+    const [open, setOpen] = useState(false)
     const router = useRouter()
     // 1. Define your form.
     const form = useForm<z.infer<typeof TeamsSchema>>({
         resolver: zodResolver(TeamsSchema),
         defaultValues: {
             name: "",
-            public: false,
         },
     })
 
@@ -36,11 +39,11 @@ export default function CreateTeam() {
         onSuccess: (data) => {
             toast.success("Team created successfully!");
             form.reset();
+            setOpen(false);
             // Forcer le rafraîchissement de la page
             router.refresh();
         },
         onError: (error) => {
-            console.error('Error creating team:', error);
             toast.error(error.error.serverError || "An error occurred while creating the team");
         }
     });
@@ -55,12 +58,18 @@ export default function CreateTeam() {
 
     return (
         <>
-            <Sheet>
-                <SheetTrigger>Create Team</SheetTrigger>
-                <SheetContent>
+            <Sheet open={open} onOpenChange={setOpen}>
+                <SheetTrigger className='flex items-center justify-center cursor-pointer gap-2 bg-neutral-800 text-white dark:bg-white dark:text-black rounded-md p-2'>
+                    <p className='dark:text-black'>Create Team</p>
+                    <Plus className='size-8 border-2 border-neutral-750 dark:border-neutral-200 dark:text-black p-1 rounded-md' />
+                </SheetTrigger>
+                <SheetContent className={cn('animate-blurred-fade-in animate-duration-200 transition-all duration-300 ease-in-out', open ? 'translate-x-0' : 'translate-x-100')}>
                     <SheetHeader>
                         <SheetTitle>Create Team</SheetTitle>
                     </SheetHeader>
+                    <SheetDescription className='mb-4'>
+                        Create a new team to start playing with your friends.
+                    </SheetDescription>
                     <Card>
                         <CardContent>
                             <Form {...form}>
@@ -74,7 +83,7 @@ export default function CreateTeam() {
                                                 <FormItem className='space-y-2'>
                                                     <FormLabel>Name</FormLabel>
                                                     <FormControl>
-                                                        <Input placeholder="Team name" {...field} />
+                                                        <Input className='dark:text-white' placeholder="Team name" {...field} />
                                                     </FormControl>
                                                     <FormDescription>
                                                         Name of the team.
@@ -83,30 +92,8 @@ export default function CreateTeam() {
                                                 </FormItem>
                                             )}
                                         />
-                                        <FormField
-                                            control={form.control}
-                                            name="public"
-                                            render={({ field }) => (
-                                                <FormItem className='space-y-2'>
-                                                    <FormLabel>Make team public</FormLabel>
-                                                    <FormControl>
-                                                        <Checkbox
-                                                            checked={field.value}
-                                                            onCheckedChange={field.onChange}
-                                                            className='cursor-pointer'
-                                                        />
-                                                    </FormControl>
-                                                    <FormDescription>
-                                                        Make team public if you want to share it with other users.
-                                                    </FormDescription>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
                                     </div>
-                                    <SheetClose asChild>
-                                        <Button type="submit" className='w-full cursor-pointer'>Create Team</Button>
-                                    </SheetClose>
+                                    <Button type="submit" className='w-full cursor-pointer'>Create Team</Button>
                                 </form>
                             </Form>
                         </CardContent>

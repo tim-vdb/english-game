@@ -227,7 +227,6 @@ exports.Prisma.NewsletterScalarFieldEnum = {
 exports.Prisma.TeamScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  public: 'public',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   creatorId: 'creatorId'
@@ -249,6 +248,24 @@ exports.Prisma.TeamInviteScalarFieldEnum = {
   used: 'used',
   createdBy: 'createdBy',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.GameSessionScalarFieldEnum = {
+  id: 'id',
+  teamId: 'teamId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ElementsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  active: 'active',
+  gameSessionId: 'gameSessionId',
+  userId: 'userId'
 };
 
 exports.Prisma.SortOrder = {
@@ -289,7 +306,9 @@ exports.Prisma.ModelName = {
   Newsletter: 'Newsletter',
   Team: 'Team',
   TeamMember: 'TeamMember',
-  TeamInvite: 'TeamInvite'
+  TeamInvite: 'TeamInvite',
+  GameSession: 'GameSession',
+  Elements: 'Elements'
 };
 
 /**

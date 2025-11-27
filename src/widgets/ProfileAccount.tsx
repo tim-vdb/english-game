@@ -51,14 +51,13 @@ export default function ProfileAccount() {
                             </p>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-
                         {user?.role === "ADMIN" && (
                             <DropdownMenuItem className="cursor-pointer">
                                 <Link href={"/admin"}>Dashboard</Link>
                             </DropdownMenuItem>
                         )}
                         <DropdownMenuItem className="cursor-pointer">
-                            <Link href={"/game/team/create"}>Manage Teams</Link>
+                            <Link href={"/game/team"}>Manage Teams</Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                             className="cursor-pointer p-0"

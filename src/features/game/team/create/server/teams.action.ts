@@ -1,11 +1,12 @@
 "use server"
 
 import { prisma } from '@/lib/prisma'
-import { actionClient } from '@/lib/safe-action-client'
+import { actionClient, SafeError } from '@/lib/safe-action-client'
 import { TeamsSchema } from './teams.schema'
 import { getUser } from '@/lib/auth-session'
-import { redirect } from 'next/navigation'
+import { redirect, unauthorized } from 'next/navigation'
 import { revalidatePath } from 'next/cache'
+import { Role } from '@/generated/prisma_client'
 
 export const TeamsSafeAction = actionClient
     .inputSchema(TeamsSchema)
@@ -14,21 +15,54 @@ export const TeamsSafeAction = actionClient
         const user = await getUser();
 
         if (!user) {
-            // throw new SafeError("Vous devez être connecté pour créer un événement");
-            redirect('/login')
+            return unauthorized();
         }
 
-        const team = await prisma.team.create({
-            data: {
+        const existingTeam = await prisma.team.findFirst({
+            where: {
                 name: input.name,
-                public: input.public,
-                creatorId: user.id,
+                creatorId: user.id
             }
+        });
+        if (existingTeam) {
+            throw new SafeError("Team already exists")
+        }
+
+        // Créer la team, ajouter l'utilisateur comme membre avec rôle GAME_MASTER, et mettre à jour le rôle de l'utilisateur en une seule transaction
+        const team = await prisma.$transaction(async (tx) => {
+            // 1. Créer la team avec le membre (relation imbriquée)
+            const newTeam = await tx.team.create({
+                data: {
+                    name: input.name,
+                    creatorId: user.id,
+                    members: {
+                        create: {
+                            userId: user.id,
+                            role: Role.GAME_MASTER
+                        }
+                    }
+                },
+                include: {
+                    members: true
+                }
+            })
+
+            // 2. Mettre à jour le rôle de l'utilisateur en GAME_MASTER
+            await tx.user.update({
+                where: {
+                    id: user.id
+                },
+                data: {
+                    role: Role.GAME_MASTER
+                }
+            })
+
+            return newTeam
         })
 
         console.log(team)
 
-        // Revalider les pages qui affichent les événements
+        // Revalider les pages qui affichent les teams
         revalidatePath('/game/team/')
         revalidatePath('/')
 
