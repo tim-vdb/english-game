@@ -26,7 +26,7 @@ export default function RootLayout({
   return (
     <html lang="fr" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} font-inter antialiased min-h-screen bg-white dark:bg-gray-extra-dark`}
+        className={`${geistSans.variable} ${geistMono.variable} font-inter antialiased min-h-screen bg-[#f3f2e3] dark:bg-gray-extra-dark`}
       >
         {children}
         <Toaster />

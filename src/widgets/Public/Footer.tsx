@@ -10,11 +10,11 @@ export default function Footer() {
   const year = date.getFullYear();
 
   return (
-    <footer className="text-gray-800 md:px-20 lg:px-20 xl:px-20 py-10 dark:bg-neutral-900 dark:text-gray-200">
+    <footer className="shadow-md bg-white dark:bg-neutral-900 transition-all duration-200 ease-in-out">
       <div className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-20 [&_h3]:mt-5">
         <div className="flex flex-col justify-center items-start">
           <div className="flex flex-col">
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-start gap-4">
               <Image
                 width={100}
                 height={100}
@@ -25,7 +25,7 @@ export default function Footer() {
               />
               <p className="text-xl font-bold">Chef's Blueprint</p>
             </div>
-            <p>
+            <p className="font-inter text-sm text-[#7f2b13]/70 dark:text-gray-300 max-w-sm mt-2">
             The narrative card game that teaches you to design the complete wireframe for a restaurant's website.
             Play, solve the riddles, and deliver the finalized model to the developer
             </p>

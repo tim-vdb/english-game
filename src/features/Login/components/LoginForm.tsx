@@ -60,6 +60,7 @@ export default function LoginForm() {
 
   return (
     <>
+    
       <div className="min-h-screen flex items-center justify-center px-4 py-12">
         <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 w-full max-w-md shadow-lg mb-24">
           <div className="text-center mb-8">
@@ -182,7 +183,7 @@ export default function LoginForm() {
           <p className="text-center text-xs text-neutral-500">
             <Link href="/sign-up" className="underline">
               <span className="dark:text-orange-200/90">
-                Besoin d'un compte ?
+                Need an account?
               </span>
             </Link>
           </p>
