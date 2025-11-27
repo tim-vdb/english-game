@@ -1,135 +1,196 @@
-import Link from "next/link";
 import Image from "next/image";
+
+const steps = [
+  {
+    title: "Brief & intention",
+    description:
+      "We gather the restaurant's universe, the UI constraints, and the number of players.",
+  },
+  {
+    title: "Prototype & playtest",
+    description:
+      "We adjust the cards, QR codes and wireframe add-on based on your feedback.",
+  },
+  {
+    title: "Activation",
+    description: "Delivery of the Chef’s Blueprint kit and live support on the day.",
+  },
+];
 
 export default function ContactPage() {
   return (
-    <section className="p-8 lg:px-24">
-      <h1 className="mb-8 text-center">Contactez-nous</h1>
+    <main className="bg-[#f3f2e3] text-[#7f2b13]">
+      <section className="max-w-6xl mx-auto px-6 lg:px-12 py-20 space-y-20">
 
-      <div className="grid md:grid-cols-2 gap-12 rounded-xl p-8 shadow-md">
-        {/* === FORMULAIRE FORMSPREE === */}
-        <form
-          id="contact-form"
-          action="https://formspree.io/f/mgvezdao"
-          method="POST"
-          className="bg-white p-6 rounded-xl shadow-md dark:shadow-black/40 flex flex-col gap-4"
-        >
-          <input type="hidden" name="contact_number" value="697483" />
-
-          <label className="flex flex-col text-sm md:text-base text-black">
-            Nom
-            <input
-              type="text"
-              name="name"
-              required
-              placeholder="Votre nom"
-              className="mt-1 p-2 rounded border focus:outline-none focus:ring-2 focus:ring-gold text-black"
-            />
-          </label>
-
-          <label className="flex flex-col text-sm md:text-base text-black">
-            Email
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="Votre email"
-              className="mt-1 p-2 rounded border focus:outline-none focus:ring-2 focus:ring-gold text-black"
-            />
-          </label>
-
-          <label className="flex flex-col text-sm md:text-base">
-            Message
-            <textarea
-              name="message"
-              rows={5}
-              required
-              placeholder="Votre message"
-              className="mt-1 p-2 rounded border focus:outline-none focus:ring-2 focus:ring-gold text-black"
-            ></textarea>
-          </label>
-
-          <button
-            type="submit"
-            className="mt-4 bg-gold text-gray-900 dark:text-white text-sm font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
-          >
-            Envoyer
-          </button>
-
-          <div id="status"></div>
-        </form>
-
-        {/* === INFOS DE CONTACT === */}
-        <div className="flex flex-col md:gap-6 dark:bg-card rounded-xl p-8">
-          <h2 className="font-bold">Nous contacter</h2>
-          <div>
-            <h3 className="md:mb-2">Adresse</h3>
-            <p>3 Rue Turbil, 69003 Lyon, France</p>
-          </div>
-
-          <div>
-            <h3 className="md:mb-2">Téléphone</h3>
-            <p>+33 6 12 34 56 78</p>
-          </div>
-
-          <div>
-            <h3 className="md:mb-2">Horaires</h3>
-            <p>Lundi - Vendredi : 10h - 18h</p>
-          </div>
-        </div>
-      </div>
-
-      {/* === SECTION IMAGE + TEXTE === */}
-      <div className="mt-16 flex flex-col md:flex-row items-center gap-8 p-8 rounded-xl shadow-md">
-        <div className="md:w-1/2 shadow-md">
-          <Image
-            width={500}
-            height={500}
-            src="/images/molkky_contact.jpeg"
-            alt="Molkky"
-            className="rounded-xl shadow-md w-full object-cover"
-          />
-        </div>
-        <div className="md:w-1/2 dark:bg-card rounded-xl p-8">
-          <h1 className="mb-4">Notre mission</h1>
-          <p className="text-sm">
-            Chez MOLKKY, nous nous efforçons de promouvoir la convivialité et le
-            sport à travers le Mölkky. Rejoignez-nous pour partager des moments
-            uniques avec notre communauté !
+        {/* ---------------- HERO CONTACT ---------------- */}
+        <div className="grid gap-14 lg:grid-cols-2 items-start">
+          
+          {/* LEFT */}
+          <div className="space-y-6">
+          <p className="text-xs uppercase tracking-[0.25em] text-[#cb3005] font-inter">
+            Contact the studio
           </p>
-          <button
-            type="button"
-            className="mt-4 bg-gold text-gray-900 font-bold py-2 px-4 rounded hover:bg-yellow-600 transition"
-          >
-            <Link href="/sign-up">S'inscrire</Link>
-          </button>
-        </div>
-      </div>
 
-      {/* === GOOGLE MAP === */}
-      <div className="mt-16 flex flex-col md:flex-row gap-8 p-8 rounded-xl shadow-md">
-        <div className="md:w-1/2 h-64 md:h-auto">
-          <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2781.123456!2d4.8357!3d45.7566!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDXCsDQ1JzQ1LjgiTiA0wrA1MCc0MC42IkU!5e0!3m2!1sfr!2sfr!4v1695480000000!5m2!1sfr!2sfr"
-            className="border-0 w-full h-full rounded-xl"
-            allowFullScreen
-          ></iframe>
+            <h1 className="font-cooper text-5xl leading-tight text-left">
+              Let's talk about your Chef’s Blueprint experience.
+            </h1>
+
+            <p className="font-inter text-lg leading-relaxed">
+              Whether you're preparing a workshop, a training session or an immersive
+              evening, our team answers your questions and builds a customized
+              kit for your leader.
+            </p>
+
+            <div className="flex gap-4 text-sm font-inter">
+              <span>📍 Lyon & remote</span>
+              <span>⏱ Answer &lt; 24h</span>
+              <span>🌐 FR / EN</span>
+            </div>
+
+            <button className="font-inter rounded-md bg-[#ec672a] text-white px-6 py-3 text-sm uppercase tracking-[0.2em] shadow-md hover:scale-[1.03] transition">
+              Book discovery call
+            </button>
+          </div>
+
+          {/* RIGHT — FORM */}
+          <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 shadow-md">
+            <form
+              id="contact-form"
+              action="https://formspree.io/f/mgvezdao"
+              method="POST"
+              className="flex flex-col gap-5 text-sm font-inter"
+            >
+              <input type="hidden" name="contact_number" value="697483" />
+
+              <label className="flex flex-col gap-2">
+                Full name
+                <input
+                  type="text"
+                  name="name"
+                  required
+                  placeholder="Ex. Camille Martin"
+                  className="rounded-md border border-[#ec672a] px-3 py-2 focus:outline-none"
+                />
+              </label>
+
+              <label className="flex flex-col gap-2">
+                Organisation
+                <input
+                  type="text"
+                  name="company"
+                  placeholder="École, studio, collectif…"
+                  className="rounded-md border border-[#ec672a] px-3 py-2 focus:outline-none"
+                />
+              </label>
+
+              <label className="flex flex-col gap-2">
+                Email
+                <input
+                  type="email"
+                  name="email"
+                  required
+                  placeholder="your@mail.com"
+                  className="rounded-md border border-[#ec672a] px-3 py-2 focus:outline-none"
+                />
+              </label>
+
+              <label className="flex flex-col gap-2">
+                Your message
+                <textarea
+                  name="message"
+                  rows={4}
+                  required
+                  placeholder="message..."
+                  className="rounded-md border border-[#ec672a] px-3 py-2 focus:outline-none"
+                ></textarea>
+              </label>
+
+              <button
+                type="submit"
+                className="rounded-md bg-[#7f2b13] px-6 py-3 text-white uppercase tracking-[0.2em] text-xs font-semibold hover:bg-[#5d1f0f] transition"
+>
+                Submit
+              </button>
+            </form>
+          </div>
+
         </div>
 
-        <div className="md:w-1/2 flex flex-col justify-center gap-4 dark:bg-card rounded-xl p-8">
-          <h2 className="font-bold">Venez nous rencontrer !</h2>
-          <p className="text-sm">
-            Retrouvez-nous au parc de Lyon pour découvrir le Mölkky en vrai !
-            Consultez nos événements et inscrivez-vous directement en ligne.
-          </p>
-          <button
-            type="button"
-            className="mt-2 bg-gold text-gray-900 font-bold py-2 px-4 rounded hover:bg-yellow-600 transition w-fit"
-          >
-            <Link href="/events">Voir les événements</Link>
-          </button>
+        {/* ---------------- PROCESS STEPS ---------------- */}
+        <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 shadow-md">
+          <h2 className="font-cooper text-3xl mb-8">
+            How we work with your kitchen crew
+          </h2>
+
+          <div className="grid gap-10 md:grid-cols-3">
+            {steps.map((step) => (
+              <article key={step.title} className="space-y-3 font-inter">
+                <div className="text-xs uppercase tracking-[0.25em] text-[#ec672a] font-semibold">
+                  {step.title}
+                </div>
+                <p className="text-sm leading-relaxed">{step.description}</p>
+              </article>
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+
+        {/* ---------------- DOWNLOAD GUIDE ---------------- */}
+        <div className="grid gap-14 md:grid-cols-2 items-center bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-12 shadow-md">
+          
+          {/* LEFT */}
+          <div className="space-y-5">
+            <p className="text-xs uppercase tracking-[0.25em] text-[#ec672a] font-inter">
+              Download
+            </p>
+
+            <h3 className="font-cooper text-3xl">
+              Chef’s Blueprint Guide 2025
+            </h3>
+
+            <p className="font-inter text-sm leading-relaxed">
+              Discover our pricing structure, detailed game flow, and tips
+              for adapting the scenario to various culinary identities.
+              Receive the full PDF instantly via email.
+            </p>
+
+            <form
+              action="https://formspree.io/f/mgvezdao"
+              method="POST"
+              className="flex flex-col gap-3 sm:flex-row"
+            >
+              <input type="hidden" name="contact_number" value="kit-download" />
+
+              <input
+                type="email"
+                name="download_email"
+                required
+                placeholder="your@restaurant.com"
+                className="flex-1 rounded-md border border-[#ec672a] px-4 py-3 text-sm focus:outline-none"
+              />
+
+              <button
+                type="submit"
+                className="rounded-md bg-[#ec672a] px-6 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white hover:scale-[1.03] transition"
+              >
+                Envoyer
+              </button>
+            </form>
+          </div>
+
+          {/* RIGHT — IMAGE */}
+          <div className="flex justify-center">
+            <Image
+              src="/logo.svg"
+              alt="Chef’s Blueprint mobile add-on"
+              width={380}
+              height={380}
+              className="object-contain"
+            />
+          </div>
+
+        </div>
+
+      </section>
+    </main>
   );
 }

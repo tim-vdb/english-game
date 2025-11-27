@@ -75,7 +75,8 @@ export default function SignUpForm() {
       toast.success("Utilisateur inscrit avec succès");
       router.push("/");
     } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
+      const errorMessage =
+        error instanceof Error ? error.message : "Une erreur est survenue";
       toast.error(errorMessage);
     } finally {
       setLoading(false);
@@ -83,51 +84,61 @@ export default function SignUpForm() {
   }
 
   return (
-    <div className="dark:bg-card bg-blue-50 rounded-xl py-12 min-h-screen flex items-center">
-      <div className="max-w-md w-full mx-auto px-6 sm:px-8 lg:px-10">
+    <div className="min-h-screen flex items-center justify-center px-4 py-12">
+      <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 w-full max-w-md shadow-lg mb-24">
+
+        {/* HEADER */}
         <div className="text-center mb-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 dark:text-white">
-            S'inscrire à Mölkky !
+          <p className="text-xs uppercase tracking-[0.25em] text-[#cb3005] font-inter">
+            Sign up
+          </p>
+
+          <h2 className="font-cooper text-4xl text-[#7f2b13] leading-tight">
+            Create your player account
           </h2>
-          <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-            Remplissez les informations pour créer votre compte.
+
+          <p className="font-inter text-sm text-[#7f2b13]/70 mt-3">
+            Fill in the fields to join Chef’s Blueprint.
           </p>
         </div>
 
+        {/* FORM */}
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6"
+            className="flex flex-col gap-6 font-inter text-[#7f2b13]"
           >
+            {/* NAME FIELDS */}
             <div className="grid grid-cols-2 gap-4">
               <FormField
                 control={form.control}
                 name="firstName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Prénom</FormLabel>
+                    <FormLabel>First name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Max"
+                        placeholder="Ex: Camille"
                         {...field}
-                        className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                        className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                       />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
+
               <FormField
                 control={form.control}
                 name="lastName"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Nom</FormLabel>
+                    <FormLabel>Last name</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Robinson"
+                        placeholder="Ex: Martin"
                         {...field}
-                        className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                        className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                       />
                     </FormControl>
                     <FormMessage />
@@ -136,6 +147,7 @@ export default function SignUpForm() {
               />
             </div>
 
+            {/* EMAIL */}
             <FormField
               control={form.control}
               name="email"
@@ -147,7 +159,7 @@ export default function SignUpForm() {
                       type="email"
                       placeholder="example@mail.com"
                       {...field}
-                      className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                      className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                     />
                   </FormControl>
                   <FormMessage />
@@ -155,18 +167,19 @@ export default function SignUpForm() {
               )}
             />
 
+            {/* PASSWORD */}
             <FormField
               control={form.control}
               name="password"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Mot de Passe</FormLabel>
+                  <FormLabel>Password</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder="••••••••"
                       {...field}
-                      className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                      className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                     />
                   </FormControl>
                   <FormMessage />
@@ -174,18 +187,19 @@ export default function SignUpForm() {
               )}
             />
 
+            {/* CONFIRM PASSWORD */}
             <FormField
               control={form.control}
               name="passwordConfirmation"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Confirmer le mot de passe</FormLabel>
+                  <FormLabel>Confirm password</FormLabel>
                   <FormControl>
                     <Input
                       type="password"
                       placeholder="••••••••"
                       {...field}
-                      className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                      className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                     />
                   </FormControl>
                   <FormMessage />
@@ -193,22 +207,22 @@ export default function SignUpForm() {
               )}
             />
 
+            {/* IMAGE UPLOAD */}
             <div className="grid gap-2">
-              <FormLabel htmlFor="image">
-                Photo de profil (optionnelle)
-              </FormLabel>
+              <FormLabel>Profile picture (optional)</FormLabel>
               <div className="flex items-end gap-4">
                 {imagePreview && (
                   <div className="relative w-16 h-16 rounded-sm overflow-hidden">
                     <Image
                       src={imagePreview}
-                      alt="Prévisualisation"
-                      className="w-full h-full object-cover"
+                      alt="Preview"
                       width={64}
                       height={64}
+                      className="object-cover"
                     />
                   </div>
                 )}
+
                 <div className="flex items-center gap-2 w-full">
                   <Input
                     id="image"
@@ -230,15 +244,16 @@ export default function SignUpForm() {
               </div>
             </div>
 
+            {/* SUBMIT */}
             <Button
               type="submit"
-              className="w-full py-2 rounded-xl hover:bg-orange-500 transition-colors"
+              className="rounded-md bg-[#7f2b13] text-white py-3 uppercase tracking-[0.2em] text-xs font-semibold hover:bg-[#5d1f0f] transition"
               disabled={loading}
             >
               {loading ? (
                 <Loader2 size={16} className="animate-spin" />
               ) : (
-                "S'inscrire"
+                "Sign up"
               )}
             </Button>
           </form>

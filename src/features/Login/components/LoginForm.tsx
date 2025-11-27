@@ -26,7 +26,7 @@ const LoginFormSchema = z.object({
   email: z.string().email("Email invalide"),
   password: z
     .string()
-    .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+    .min(6, "The password must contain at least 6 characters."),
 });
 
 export default function LoginForm() {
@@ -67,21 +67,27 @@ export default function LoginForm() {
 
   return (
     <>
-      <div className="dark:bg-card bg-blue-50 rounded-xl py-12 min-h-screen flex items-center">
-        <div className="max-w-md mx-auto w-full  px-6 sm:px-8 lg:px-10">
+    
+      <div className="min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 w-full max-w-md shadow-lg mb-24">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-gray-900 dark:text-white">
-              Connectez-vous à Mölkky !
-            </h2>
-            <p className="mt-2 text-sm text-gray-500 dark:text-gray-300">
-              Entrez vos informations pour vous connecter.
+            
+            <p className="text-xs uppercase tracking-[0.25em] text-[#cb3005] font-inter">
+              Login
             </p>
+            <h2 className="font-cooper text-4xl text-[#7f2b13] leading-tight">
+              Welcome back to Chef's Blueprint
+            </h2>
+            <p className="font-inter text-sm text-[#7f2b13]/70 mt-3">
+              Log in to access your player area.
+            </p>
+
           </div>
 
           <Form {...form}>
             <form
               onSubmit={form.handleSubmit(onSubmit)}
-              className="space-y-6 bg-white dark:bg-gray-800 shadow-md rounded-2xl p-6"
+              className="flex flex-col gap-6 font-inter text-[#7f2b13]"
             >
               <FormField
                 control={form.control}
@@ -94,7 +100,7 @@ export default function LoginForm() {
                         type="email"
                         placeholder="example@mail.com"
                         {...field}
-                        className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                        className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                       />
                     </FormControl>
                     <FormMessage />
@@ -107,13 +113,13 @@ export default function LoginForm() {
                 name="password"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Mot de passe</FormLabel>
+                    <FormLabel>Password</FormLabel>
                     <FormControl>
                       <Input
                         type="password"
                         placeholder="••••••••"
                         {...field}
-                        className="bg-gray-50 dark:bg-gray-700 focus:ring-2 focus:ring-orange-400 dark:focus:ring-orange-500"
+                        className="border border-[#ec672a] rounded-md px-3 py-2 focus:outline-none"
                       />
                     </FormControl>
                     <FormMessage />
@@ -123,13 +129,13 @@ export default function LoginForm() {
 
               <Button
                 type="submit"
-                className="w-full py-2 rounded-xl hover:bg-orange-500 transition-colors"
+                className="rounded-md bg-[#7f2b13] text-white py-3 uppercase tracking-[0.2em] text-xs font-semibold hover:bg-[#5d1f0f] transition"
                 disabled={loading}
               >
                 {loading ? (
                   <Loader2 size={16} className="animate-spin" />
                 ) : (
-                  "Se connecter"
+                  "log in"
                 )}
               </Button>
 
@@ -179,55 +185,23 @@ export default function LoginForm() {
                 </svg>
                 Sign in with Google
               </Button>
-              <Button
-                variant="outline"
-                className={cn("w-full gap-2")}
-                disabled={loading}
-                onClick={async () => {
-                  await signIn.social(
-                    {
-                      provider: "facebook",
-                      callbackURL: "/",
-                    },
-                    {
-                      onRequest: (ctx) => {
-                        setLoading(true);
-                      },
-                      onResponse: (ctx) => {
-                        setLoading(false);
-                      },
-                    }
-                  );
-                }}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M20 3H4a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h8.615v-6.96h-2.338v-2.725h2.338v-2c0-2.325 1.42-3.592 3.5-3.592c.699-.002 1.399.034 2.095.107v2.42h-1.435c-1.128 0-1.348.538-1.348 1.325v1.735h2.697l-.35 2.725h-2.348V21H20a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1z"
-                    fill="currentColor"
-                  ></path>
-                </svg>
-                Sign in with Facebook
-              </Button>
-            </form>
-          </Form>
-        </div>
-      </div>
-      <CardFooter>
+              <CardFooter>
         <div className="flex justify-center w-full py-4">
           <p className="text-center text-xs text-neutral-500">
             <Link href="/sign-up" className="underline">
               <span className="dark:text-orange-200/90">
-                Besoin d'un compte ?
+                Need an account?
               </span>
             </Link>
           </p>
         </div>
       </CardFooter>
+              
+            </form>
+          </Form>
+        </div>
+      </div>
+    
     </>
   );
 }

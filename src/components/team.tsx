@@ -1,54 +1,61 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
 
+const LinkedInIcon = () => (
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.5"
+        className="h-4 w-4"
+    >
+        <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2h0a2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+        <rect x="2" y="9" width="4" height="12" />
+        <circle cx="4" cy="4" r="2" />
+    </svg>
+)
+
 const members = [
     {
         name: 'Timothée VAN DEN BOSCH',
-        role: 'Founder - Developer - CTO',
+        role: 'Game Designer',
         avatar: '/images/team/Timothée_VDB.webp',
-        linkedIn: 'https://www.linkedin.com/in/timothee-van-den-bosch',
-        portfolio: 'https://tim-vdb.github.io',
+        linkedIn: 'https://www.linkedin.com/in/timothee-van-den-bosch'
+
     },
     {
-        name: 'Nolan CAZAIN',
-        role: 'Co-Founder - Videographer - CEO',
-        avatar: '/images/team/Nolan_CAZAIN.avif',
-        linkedIn: 'https://www.linkedin.com/in/no5',
-        portfolio: 'https://nolancazain.com',
+        name: 'Mouhamed Gaye',
+        role: 'Front-End Developer',
+        avatar: '/images/team/Mouhamed_Gaye.jpg',
+        linkedIn: 'https://www.linkedin.com/in/mouhamed-gaye'
     },
     {
-        name: 'Guerric COCHELIN',
-        role: 'Developer - CFO',
-        avatar: '/images/team/Guerric_COCHELIN.png',
-        linkedIn: 'https://www.linkedin.com/in/guerric-cochelin-497ab61b1',
-        portfolio: 'https://guerricco.github.io/portfolio',
+        name: 'Camille Fettet-Houbaille',
+        role: 'Narrative Designer',
+        avatar: '/images/team/Camille_Fettet-Houbaille.jpg',
+        linkedIn: 'https://www.linkedin.com/in/camille-fettet-houbaille'
     },
     {
-        name: 'Alyssia HUSS',
-        role: 'UX Engeneer',
-        avatar: '/images/team/Alyssia_HUSS.jpg',
-        linkedIn: 'https://www.linkedin.com/in/alyssia-huss-875519214',
-        portfolio: 'https://alyssiahuss.framer.ai',
-    },
-    {
-        name: 'Alexandre BOULET',
-        role: 'Chief Marketing Officer',
-        avatar: '/images/team/Alexandre_BOULET.png',
-        linkedIn: 'https://www.linkedin.com/in/alexandre-boulet-176791291',
+        name: 'Quentin Faure',
+        role: 'UX Specialist',
+        avatar: '/images/team/Quentin_Faure.jpg',
+        linkedIn: 'https://www.linkedin.com/in/quentin-faure'
     },
 ]
 
 export default function TeamSection() {
     return (
-        <section className="bg-gray-50 py-16 md:py-32 dark:bg-transparent">
+        <section className="bg-[#F7F2EC] py-16 md:py-32">
+            
             <div className="mx-auto max-w-5xl border-t px-6">
-                <span className="text-caption -ml-6 -mt-3.5 block w-max bg-gray-50 px-6 dark:bg-gray-950">Team</span>
+                
                 <div className="mt-12 gap-4 sm:grid sm:grid-cols-2 md:mt-24">
                     <div className="sm:w-2/5">
                         <h2 className="text-3xl font-bold sm:text-4xl mt-0">Our dream team</h2>
                     </div>
                     <div className="mt-6 sm:mt-0">
-                        <p>During the working process, we perform regular fitting with the client because he is the only person who can feel whether a new suit fits or not.</p>
+                        <p>Throughout Chef’s Blueprint, we validate each idea with the chef and his developer to feel if the wireframe faithfully translates the identity of the restaurant.</p>
                     </div>
                 </div>
                 <div className="mt-12 md:mt-24">
@@ -80,7 +87,6 @@ export default function TeamSection() {
                                 <div className="px-2 pt-2 sm:pb-0 sm:pt-4 space-y-2">
                                     <div className="flex justify-between">
                                         <h3 className="text-base font-medium transition-all duration-500 group-hover:tracking-wider">{member.name}</h3>
-                                        <span className="text-xs">_0{index + 1}</span>
                                     </div>
                                     <div className="mt-1 flex items-center justify-between">
                                         <span className="text-muted-foreground inline-block translate-y-6 text-sm opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">{member.role}</span>
@@ -88,18 +94,13 @@ export default function TeamSection() {
                                     <div className="flex items-center justify-between gap-2">
                                         <Link
                                             href={member.linkedIn}
-                                            className="group-hover:text-primary-600 dark:group-hover:text-primary-400 inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100">
-                                            {' '}
+                                            target="_blank"
+                                            rel="noreferrer"
+                                            className="group-hover:text-primary-600 dark:group-hover:text-primary-400 inline-flex items-center gap-2 translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100">
+                                            <LinkedInIcon />
                                             LinkedIn
                                         </Link>
-                                        {member.portfolio && (
-                                            <Link
-                                                href={member.portfolio}
-                                                className="group-hover:text-primary-600 dark:group-hover:text-primary-400 inline-block translate-y-8 text-sm tracking-wide opacity-0 transition-all duration-500 hover:underline group-hover:translate-y-0 group-hover:opacity-100">
-                                                {' '}
-                                                Portfolio
-                                            </Link>
-                                        )}
+
                                     </div>
                                 </div>
                             </div>

@@ -26,13 +26,9 @@ export default function FooterNavbar() {
             <div className="flex flex-col">
                 <h3 className="text-lg">Resources</h3>
                 <ul className="space-y-4 ">
+                    
                     <li>
-                        <Link href="/rules" className="transition">
-                            Game Rules
-                        </Link>
-                    </li>
-                    <li>
-                        z<Link href="/design" className="transition">
+                        <Link href="/design" className="transition">
                             Game Design
                         </Link>
                     </li>

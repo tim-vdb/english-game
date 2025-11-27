@@ -13,10 +13,10 @@ export default function DesktopNavbar() {
   };
 
   const linksClasses = {
-    base: "px-3 py-2 rounded-md text-sm font-medium transition-colors font-cooper",
+    base: "px-3 py-2 rounded-md text-sm font-medium transition-colors font-cooper uppercase tracking-wider",
     isActive:
-      "underline decoration-2 decoration-blue-500 dark:decoration-yellow-600 text-black dark:text-white",
-    notActive: "text-black dark:text-gray-300",
+      "underline decoration-2 decoration-[#ec672a] text-[#7f2b13] dark:decoration-yellow-600 dark:text-white",
+    notActive: "text-[#7f2b13] hover:text-[#ec672a] dark:text-gray-300 dark:hover:text-[#ec672a]",
   };
 
   return (
