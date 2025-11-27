@@ -14,19 +14,29 @@ export default function unauthorized() {
                     </div>
                     {/* Titre */}
                     <h1 className='text-2xl font-bold text-gray-900 mb-3'>
-                        Accès refusé
+                        Access denied
                     </h1>
                     {/* Description */}
                     <p className='text-gray-600 mb-8 leading-relaxed'>
-                        Vous n'avez pas les permissions nécessaires pour accéder à cette page.
+                        You need to be logged in to access this page with the right permissions
                     </p>
                     {/* Bouton */}
-                    <Link href="/">
-                        <Button className='w-full bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'>
-                            <ArrowLeftIcon className="w-4 h-4" />
-                            Retour à l'accueil
-                        </Button>
-                    </Link>
+                    <div className='flex flex-col gap-2'>
+                        <Link href="/login">
+                            <Button className='w-full cursor-pointer bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'>
+                                <ArrowLeftIcon className="w-4 h-4" />
+                                Login
+                            </Button>
+                        </Link>
+
+                        <Link href="/">
+                            <Button className='w-full cursor-pointer bg-gray-900 hover:bg-gray-800 text-white font-medium py-3 px-6 rounded-lg transition-colors duration-200 flex items-center justify-center gap-2'>
+                                <ArrowLeftIcon className="w-4 h-4" />
+                                Or go back to the home page
+                            </Button>
+                        </Link>
+                    </div>
+
                 </div>
                 {/* Message supplémentaire */}
                 <p className='text-center text-sm text-gray-500 mt-6'>

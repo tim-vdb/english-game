@@ -8,5 +8,9 @@ export default async function Page() {
     return unauthorized();
   }
 
-  return <h1>Admin Dashboard</h1>;
+  return (
+    <div className="container">
+      <h1>Admin Dashboard</h1>
+    </div>
+  );
 }

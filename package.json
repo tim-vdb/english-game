@@ -11,6 +11,7 @@
     "lint:eslint": "npx @next/codemod@canary next-lint-to-eslint-cli .",
     "db:deploy": "npx prisma migrate deploy --schema=src/prisma/schema.prisma",
     "reset": "doppler run -- npx prisma migrate reset --schema=src/prisma/schema.prisma",
+    "reset:local": "npx prisma migrate reset --schema=src/prisma/schema.prisma",
     "validate": "doppler run -- npx prisma validate --schema=src/prisma/schema.prisma",
     "migrate": "doppler run -- npx prisma migrate dev --schema=src/prisma/schema.prisma",
     "migrate:prod": "doppler run -- prisma migrate deploy --schema=src/prisma/schema.prisma",

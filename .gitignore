@@ -33,8 +33,12 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
-/src/generated/
-/generated/
+# prisma generated files
+/src/generated
+/generated
+**/generated/**
+src/generated/**
+generated/**
 
 # vercel
 .vercel
@@ -42,3 +46,4 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+

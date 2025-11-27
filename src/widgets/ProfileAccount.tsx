@@ -8,7 +8,6 @@ import {
     DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import React from "react";
 import LogOut from "@/features/Logout/components/logout";
 import { User2 } from "lucide-react";
 import Link from "next/link";
@@ -52,12 +51,14 @@ export default function ProfileAccount() {
                             </p>
                         </DropdownMenuLabel>
                         <DropdownMenuSeparator />
-
                         {user?.role === "ADMIN" && (
                             <DropdownMenuItem className="cursor-pointer">
                                 <Link href={"/admin"}>Dashboard</Link>
                             </DropdownMenuItem>
                         )}
+                        <DropdownMenuItem className="cursor-pointer">
+                            <Link href={"/game/team"}>Manage Teams</Link>
+                        </DropdownMenuItem>
                         <DropdownMenuItem
                             className="cursor-pointer p-0"
                             onSelect={(e) => e.preventDefault()}

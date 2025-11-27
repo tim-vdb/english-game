@@ -1,17 +1,22 @@
+"use client"
 // src/components/ui/footer.tsx
 import FooterNavbar from "@/features/Navbar/Public/Desktop/FooterNavbar";
 import Newsletter from "@/features/NewsLetter/components/Newsletter.tsx/Newsletter";
 import SocialMedia from "@/features/SocialMedia/SocialMedia";
+import { cn } from "@/lib/utils";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
   const date = new Date();
   const year = date.getFullYear();
+  const pathname = usePathname();
+  const isGame = pathname.startsWith("/game");
 
   return (
-    <footer className="shadow-md bg-white dark:bg-neutral-900 transition-all duration-200 ease-in-out">
-      <div className="container grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-20 [&_h3]:mt-5">
+    <footer className={cn("shadow-md bg-white text-gray-800 py-10 dark:bg-neutral-900 dark:text-gray-200", isGame ? "px-4" : "md:px-20 lg:px-20 xl:px-20")}>
+      <div className="container grid grid-cols-1 md:grid-cols-3 gap-20 [&_h3]:mt-5">
         <div className="flex flex-col justify-center items-start">
           <div className="flex flex-col">
             <div className="flex items-start gap-4">
@@ -34,7 +39,7 @@ export default function Footer() {
         </div>
 
         <FooterNavbar />
-        <Newsletter title="Newsletter" />
+        {/* <Newsletter title="Newsletter" /> */}
       </div>
 
       {/* Copyright */}
