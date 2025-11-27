@@ -259,15 +259,14 @@
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    transition: background-color 5000s linear 0s;
-    -webkit-text-fill-color: rgb(0, 0, 0);
+    -webkit-text-fill-color: black;
   }
 
   .dark input:-webkit-autofill,
   .dark input:-webkit-autofill:hover,
   .dark input:-webkit-autofill:focus,
   .dark input:-webkit-autofill:active {
-    -webkit-text-fill-color: black;
+    -webkit-text-fill-color: white;
   }
 
   input::-webkit-calendar-picker-indicator {

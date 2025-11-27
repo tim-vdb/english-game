@@ -3,7 +3,7 @@
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { toast } from "sonner";
 import { useState } from "react";
 import {
@@ -30,6 +30,9 @@ const LoginFormSchema = z.object({
 });
 
 export default function LoginForm() {
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get("callbackUrl");
+  console.log(callbackUrl);
   const router = useRouter();
   const [loading, setLoading] = useState(false);
 
@@ -49,7 +52,11 @@ export default function LoginForm() {
         password: values.password,
       });
       toast.success("Utilisateur connecté");
-      router.push("/");
+      if (callbackUrl) {
+        router.push(callbackUrl);
+      } else {
+        router.push("/");
+      }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
       toast.error(errorMessage);
