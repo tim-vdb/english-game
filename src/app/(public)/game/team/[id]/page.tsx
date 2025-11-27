@@ -30,8 +30,8 @@ export default async function TeamPage({ params }: { params: { id: string } }) {
     const teamMembers = await GetTeamMembersAction(id);
 
     return (
-        <div className="container mt-20">
-            <h1 className="">{team.name}</h1>
+        <div className="container">
+            <h1>{team.name}</h1>
             <p>{team.creator?.name}</p>
             <CreateButtonInvite teamId={id} />
             {teamMembers.length > 0 ? (

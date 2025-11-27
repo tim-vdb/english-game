@@ -55,7 +55,7 @@ model Event {
   createdAt       DateTime       @default(now())
   updatedAt       DateTime       @default(now()) @updatedAt
   creatorId       String
-  creator         User           @relation("CreatedEvents", fields: [creatorId], references: [id])
+  creator         User           @relation("CreatedEvents", fields: [creatorId], references: [id], onDelete: Cascade)
   registrations   Registration[]
 
   @@map("event")
@@ -72,8 +72,8 @@ model Registration {
   createdAt    DateTime @default(now())
   eventId      String
   userId       String?
-  event        Event    @relation(fields: [eventId], references: [id])
-  user         User?    @relation(fields: [userId], references: [id])
+  event        Event    @relation(fields: [eventId], references: [id], onDelete: Cascade)
+  user         User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("registration")
 }
@@ -174,7 +174,7 @@ model Team {
   members      TeamMember[]
   invites      TeamInvite[] // les liens d'invitation
   creatorId    String
-  creator      User          @relation("CreatedTeams", fields: [creatorId], references: [id])
+  creator      User          @relation("CreatedTeams", fields: [creatorId], references: [id], onDelete: Cascade)
   gameSessions GameSession[]
 
   @@map("team")
@@ -185,8 +185,8 @@ model TeamMember {
   teamId String
   userId String
   role   Role   @default(MEMBER) // ADMIN, MEMBER...
-  team   Team   @relation(fields: [teamId], references: [id])
-  user   User   @relation("TeamMembers", fields: [userId], references: [id])
+  team   Team   @relation(fields: [teamId], references: [id], onDelete: Cascade)
+  user   User   @relation("TeamMembers", fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("team_member")
 }
@@ -199,7 +199,7 @@ model TeamInvite {
   expiresAt DateTime
   used      Boolean  @default(false)
   createdBy String // userId de l'admin qui a créé le lien
-  team      Team     @relation(fields: [teamId], references: [id])
+  team      Team     @relation(fields: [teamId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
 
   @@index([token])
@@ -210,7 +210,7 @@ model TeamInvite {
 model GameSession {
   id        String     @id @default(cuid())
   teamId    String
-  team      Team       @relation(fields: [teamId], references: [id])
+  team      Team       @relation(fields: [teamId], references: [id], onDelete: Cascade)
   createdAt DateTime   @default(now())
   updatedAt DateTime   @updatedAt
   elements  Elements[]
@@ -226,9 +226,9 @@ model Elements {
   updatedAt     DateTime    @updatedAt
   active        Boolean     @default(false)
   gameSessionId String
-  gameSession   GameSession @relation(fields: [gameSessionId], references: [id])
+  gameSession   GameSession @relation(fields: [gameSessionId], references: [id], onDelete: Cascade)
   userId        String
-  user          User        @relation("UserElements", fields: [userId], references: [id])
+  user          User        @relation("UserElements", fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, gameSessionId, name])
   @@index([userId])

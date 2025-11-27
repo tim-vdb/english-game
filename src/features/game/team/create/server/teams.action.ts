@@ -60,6 +60,12 @@ export const TeamsSafeAction = actionClient
             return newTeam
         })
 
+        await prisma.gameSession.create({
+            data: {
+                teamId: team.id
+            }
+        })
+
         console.log(team)
 
         // Revalider les pages qui affichent les teams

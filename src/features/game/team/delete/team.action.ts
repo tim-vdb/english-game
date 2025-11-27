@@ -2,7 +2,7 @@
 import { getUser } from "@/lib/auth-session";
 import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
-import { redirect, unauthorized } from "next/navigation";
+import { unauthorized } from "next/navigation";
 
 export default async function DeleteTeamAction(id: string) {
     const user = await getUser();
@@ -11,50 +11,48 @@ export default async function DeleteTeamAction(id: string) {
     }
 
     const team = await prisma.team.findUnique({
-        where: { creatorId: user.id, id: id }
+        where: { creatorId: user.id, id: id },
+        include: {
+            members: {
+                where: { userId: user.id, role: "GAME_MASTER" }
+            }
+        }
     });
+
     if (!team) {
-        return unauthorized();
+        return {
+            success: false,
+            message: "You are not authorized to delete this team."
+        };
+    }
+
+    // Vérifier si l'utilisateur est GAME_MASTER de l'équipe
+    const isGameMaster = user.role === "GAME_MASTER";
+
+    if (!isGameMaster) {
+        return {
+            success: false,
+            message: "Only Game Masters can delete a team."
+        };
     }
 
     const gameMasterMemberCount = await prisma.teamMember.count({
         where: {
             teamId: id,
-            role: "GAME_MASTER"
         }
     });
 
-    if (gameMasterMemberCount <= 1) {
+    if (gameMasterMemberCount > 1) {
         return {
             success: false,
-            message: "Le game master ne peut pas se supprimer tant qu'il est le seul GAME_MASTER de l'équipe."
+            message: "You cannot delete the team unless you are the last person"
         };
     }
 
-    // Supprimer la team et tous ses membres/invites en une transaction
-    await prisma.$transaction(async (tx) => {
-        // 1. Supprimer tous les membres de la team
-        await tx.teamMember.deleteMany({
-            where: {
-                teamId: id,
-                role: {
-                    not: "GAME_MASTER"
-                }
-            }
-        });
-
-        // 2. Supprimer toutes les invitations de la team
-        await tx.teamInvite.deleteMany({
-            where: { teamId: id }
-        });
-
-        // 3. Supprimer la team
-        await tx.team.delete({
-            where: { id }
-        });
+    // Supprimer la team (les relations sont supprimées automatiquement grâce à onDelete: Cascade)
+    await prisma.team.delete({
+        where: { id }
     });
-
-
 
     revalidatePath('/game/team');
     return { success: true };

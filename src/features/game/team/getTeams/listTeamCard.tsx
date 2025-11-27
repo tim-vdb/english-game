@@ -29,7 +29,7 @@ export default function ListTeamCard({ team }: ListTeamCardProps) {
                     toast.success("Team deleted successfully!");
                     router.refresh();
                 } else {
-                    toast.error("Error deleting team");
+                    toast.error(result.message || "Error deleting team");
                 }
             } catch (error) {
                 console.error('Error:', error);
