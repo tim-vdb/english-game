@@ -6,30 +6,53 @@ import { User } from 'lucide-react';
 
 interface HeaderProps {
   GAME_NAME?: string;
-  timeRemaining?: string; 
+  timeRemaining?: string;
   currentLevel?: number;
   playersCount?: number;
+  isLogoElement?: boolean;
+  isHeaderElement?: boolean;
 }
 
-export default function HeaderGame({ 
-  GAME_NAME = "Chef's Blueprint", 
-  timeRemaining, 
-  currentLevel, 
-  playersCount 
+export default function HeaderGame({
+  GAME_NAME = "Chef's Blueprint",
+  timeRemaining,
+  currentLevel,
+  playersCount,
+  isLogoElement = false,
+  isHeaderElement = false
 }: HeaderProps) {
   return (
-    <header className="bg-[#f5f1e8] border-2 border-black py-6 px-8">
+    <div className="bg-[#f5f1e8] rounded-t-xl py-6 px-8">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
+
         {/* Logo + Title */}
         <div className="flex items-center">
-          <Image 
-            src="/logo.svg" 
-            alt="Chef's Blueprint Logo" 
-            width={180} 
-            height={80}
-            className="object-contain"
-          />
+          {/* Logo avec masque seulement si logo désactivé ET header activé */}
+          {!isLogoElement && isHeaderElement ? (
+            <div className="relative">
+              <div
+                className="w-[180px] h-[80px] bg-white rounded-lg"
+                style={{
+                  WebkitMaskImage: 'url(/logo.svg)',
+                  maskImage: 'url(/logo.svg)',
+                  WebkitMaskSize: 'contain',
+                  maskSize: 'contain',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  maskPosition: 'center'
+                }}
+              />
+            </div>
+          ) : (
+            <Image
+              src="/logo.svg"
+              alt="Chef's Blueprint Logo"
+              width={180}
+              height={80}
+              className="object-contain"
+            />
+          )}
         </div>
 
         {/* Navigation */}
@@ -37,11 +60,14 @@ export default function HeaderGame({
           <ul className="flex space-x-6">
             {['RESERVE', 'MENU', 'CONTACT'].map((item) => (
               <li key={item}>
-                <a 
+                <a
                   href="#"
-                  className="bg-[#ff6b3d] text-white font-bold text-xl px-8 py-3 
-                             hover:bg-[#e85a2d] transition-colors
-                             tracking-wide uppercase"
+                  className={`font-bold text-xl px-8 py-3 transition-colors tracking-wide uppercase ${
+                    // Beige si logo activé ET header désactivé
+                    isLogoElement && !isHeaderElement
+                      ? 'bg-white text-neutral-700 hover:bg-[#d8d6c4]'
+                      : 'bg-[#ff6b3d] text-white hover:bg-[#e85a2d]'
+                    }`}
                   style={{ fontFamily: 'Cooper, serif' }}
                 >
                   {item}
@@ -54,38 +80,55 @@ export default function HeaderGame({
         {/* Chef Icon */}
         <div className="flex items-center">
           <div className="relative w-20 h-20">
-            <Image 
-              src="/images/icon_chef.png" 
-              alt="Chef Icon" 
-              width={80} 
-              height={80} 
-              className="object-contain"
-            />
+            {/* Beige si logo activé ET header désactivé, sinon normale */}
+            {isLogoElement && !isHeaderElement ? (
+              <div
+                className="w-20 h-20 bg-white rounded-full"
+                style={{
+                  WebkitMaskImage: 'url(/images/icon_chef.png)',
+                  maskImage: 'url(/images/icon_chef.png)',
+                  WebkitMaskSize: 'contain',
+                  maskSize: 'contain',
+                  WebkitMaskRepeat: 'no-repeat',
+                  maskRepeat: 'no-repeat',
+                  WebkitMaskPosition: 'center',
+                  maskPosition: 'center'
+                }}
+              />
+            ) : (
+              <Image
+                src="/images/icon_chef.png"
+                alt="Chef Icon"
+                width={80}
+                height={80}
+                className="object-contain"
+              />
+            )}
           </div>
         </div>
 
       </div>
-    </header>
+    </div>
   );
 }
 
 // Version alternative avec le User icon de Lucide si besoin
-export function HeaderGameAlt({ 
-  GAME_NAME = "Chef's Blueprint", 
-  timeRemaining, 
-  currentLevel, 
-  playersCount 
+export function HeaderGameAlt({
+  GAME_NAME = "Chef's Blueprint",
+  timeRemaining,
+  currentLevel,
+  playersCount
 }: HeaderProps) {
   return (
     <header className="bg-[#f5f1e8] border-2 border-black py-6 px-8">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
-        
+
         {/* Logo + Title */}
         <div className="flex items-center">
-          <Image 
-            src="/logo.svg" 
-            alt="Chef's Blueprint Logo" 
-            width={180} 
+          <Image
+            src="/logo.svg"
+            alt="Chef's Blueprint Logo"
+            width={180}
             height={80}
             className="object-contain"
           />
@@ -96,7 +139,7 @@ export function HeaderGameAlt({
           <ul className="flex space-x-6">
             {['RESERVE', 'MENU', 'CONTACT'].map((item) => (
               <li key={item}>
-                <a 
+                <a
                   href="#"
                   className="bg-[#ff6b3d] text-white font-bold text-xl px-8 py-3 
                              hover:bg-[#e85a2d] transition-colors

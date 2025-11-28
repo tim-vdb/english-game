@@ -8,7 +8,7 @@ const socialLinks = ['Twitter', 'Instagram', 'LinkedIn'];
 
 export default function FooterGame() {
   return (
-    <footer className="w-full bg-[#ec672a] text-white pt-12 pb-8 shadow-[0px_-5px_15px_-3px_rgba(0,0,0,0.15)] transition-all duration-300 ease-in-out">
+    <div className="w-full bg-[#ec672a] text-white rounded-b-xl pt-12 pb-8 shadow-[0px_-5px_15px_-3px_rgba(0,0,0,0.15)] transition-all duration-300 ease-in-out">
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
 
         {/* TITLE */}
@@ -84,6 +84,6 @@ export default function FooterGame() {
           © {new Date().getFullYear()} Chef's Blueprint Game. Tous droits réservés.
         </div>
       </div>
-    </footer>
+    </div>
   );
 }

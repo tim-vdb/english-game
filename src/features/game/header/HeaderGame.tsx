@@ -23,7 +23,7 @@ export default function HeaderGame() {
     const isSidebarExpanded = state === "expanded";
 
     return (
-        <header className={cn("fixed h-20", isSidebarExpanded ? "w-[calc(100%-16rem)]" : "w-full")}>
+        <header className={cn("fixed h-20 z-50 w-full", isSidebarExpanded ? "sm:w-[calc(100%-16rem)]" : "w-full")}>
             <div
                 className="left-0 right-0 shadow-sm top-0 z-50 bg-white dark:bg-neutral-900 transition-all duration-200 ease-in-out h-20"
             >
@@ -31,7 +31,7 @@ export default function HeaderGame() {
                     <SidebarTrigger className="mr-4 cursor-pointer" />
                     <Link href="/" className="shrink-0">
                         <Image
-                            src="/images/cassetete.jpg"
+                            src="/logo.svg"
                             alt="CHROM Logo"
                             width={100}
                             height={100}

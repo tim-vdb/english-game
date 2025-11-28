@@ -40,7 +40,7 @@ export default async function DashboardLayout({
                     <SidebarProvider defaultOpen={true}>
                         <AppSidebar />
                         <div className="flex flex-1 font-inter antialiased">
-                            <div className="flex flex-1 flex-col gap-4">
+                            <div className="flex flex-1 flex-col gap-12">
                                 <HeaderGame />
                                 <div className="min-h-screen mt-20">
                                     {children}

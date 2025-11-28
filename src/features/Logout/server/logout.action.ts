@@ -9,6 +9,6 @@ export async function LogoutAction() {
     await auth.api.signOut({
         headers: await headers(),
     });
-    console.log("Déconnexion réussie");
+    console.log("Logout successful");
     redirect("/login");
 }

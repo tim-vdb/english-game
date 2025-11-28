@@ -5,13 +5,19 @@ import { getUser } from '@/lib/auth-session';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader } from '@/components/ui/card';
+import HeaderGame from '@/features/game/element/HeaderGame';
+import BodyGame from '@/features/game/element/BodyGame';
+import FooterGame from '@/features/game/element/FouterGame';
+import FormGame from '@/features/game/element/FormGame';
+import LogoGame from '@/features/game/element/LogoGame';
+import GameSessionTableWrapper from '@/features/game/element/GameSessionTableWrapper';
 
 const DEFAULT_ELEMENTS = [
-    { name: 'header', description: 'Header element' },
-    { name: 'footer', description: 'Footer element' },
-    { name: 'body', description: 'Body element' },
-    { name: 'form', description: 'Form element' },
-    { name: 'logo', description: 'Logo element' },
+    { name: 'header', description: 'The section located at the top of a web page. It generally contains the logo, the main navigation, and sometimes a search engine or shortcuts.' },
+    { name: 'footer', description: 'Area located at the bottom of a web page. It often contains secondary links, legal information, contact details, credits or shortcuts.' },
+    { name: 'body', description: 'The main content area of a web page. It contains all the sections and information that the user sees when browsing the page.' },
+    { name: 'form', description: 'A set of fields allowing the user to enter information (text, options, checkboxes, buttons). Examples: contact form, login form, registration form.' },
+    { name: 'logo', description: 'A graphic symbol representing the identity of a project, brand, or product. It is the main visual element for recognition.' },
 ];
 
 export default async function GamePlayPage({ params }: { params: { id: string } }) {
@@ -78,41 +84,41 @@ export default async function GamePlayPage({ params }: { params: { id: string } 
             skipDuplicates: true, // Évite les erreurs si les éléments existent déjà
         });
 
-        // Recharger la session pour avoir les nouveaux éléments
-        const updatedSession = await prisma.gameSession.findUnique({
-            where: { id },
-            include: {
-                team: true,
-                elements: {
-                    include: {
-                        user: true,
-                    },
-                },
-            }
-        });
+        // // Recharger la session pour avoir les nouveaux éléments
+        // const updatedSession = await prisma.gameSession.findUnique({
+        //     where: { id },
+        //     include: {
+        //         team: true,
+        //         elements: {
+        //             include: {
+        //                 user: true,
+        //             },
+        //         },
+        //     }
+        // });
 
-        if (updatedSession) {
-            // Récupérer les éléments de l'utilisateur après création
-            const newUserElements = updatedSession.elements.filter(el => el.userId === user.id);
+        // if (updatedSession) {
+        //     // Récupérer les éléments de l'utilisateur après création
+        //     const newUserElements = updatedSession.elements.filter(el => el.userId === user.id);
 
-            return (
-                <div>
-                    <h1>Game Session: {gameSession.team.name}</h1>
-                    <p>Welcome! Your game elements have been initialized.</p>
+        //     return (
+        //         <div>
+        //             <h1>Game Session: {gameSession.team.name}</h1>
+        //             <p>Welcome! Your game elements have been initialized.</p>
 
-                    <h2>Your Elements ({newUserElements.length})</h2>
+        //             <h2>Your Elements ({newUserElements.length})</h2>
 
-                    <ul>
-                        {newUserElements.map((element) => (
-                            <li key={element.id}>
-                                <strong>{element.name}</strong> - {element.active ? '✅ Active' : '❌ Inactive'}
-                                {element.description && <span>: {element.description}</span>}
-                            </li>
-                        ))}
-                    </ul>
-                </div>
-            );
-        }
+        //             <ul>
+        //                 {newUserElements.map((element) => (
+        //                     <li key={element.id}>
+        //                         <strong>{element.name}</strong> - {element.active ? '✅ Active' : '❌ Inactive'}
+        //                         {element.description && <span>: {element.description}</span>}
+        //                     </li>
+        //                 ))}
+        //             </ul>
+        //         </div>
+        //     );
+        // }
     }
 
     // Récupérer tous les utilisateurs uniques qui ont des éléments dans cette session
@@ -129,57 +135,51 @@ export default async function GamePlayPage({ params }: { params: { id: string } 
             name: true,
             email: true,
             image: true,
+            role: true,
+            createdAt: true,
+            updatedAt: true,
         },
     });
+
+    // Récupérer les éléments actifs de l'utilisateur
+    const activeElements = userElements.filter(el => el.active);
+
+    // Fonction helper pour vérifier si un élément est actif
+    const isElementActive = (elementName: string) => {
+        return activeElements.some(el => el.name.toLowerCase() === elementName.toLowerCase());
+    };
 
     return (
         <div className='container mt-20'>
             <h1>Game Session: {gameSession.team.name}</h1>
 
-            <h2>Your Elements ({userElements.length})</h2>
-            <ul>
-                {userElements.map((element) => (
-                    <li key={element.id}>
-                        <strong>{element.name}</strong> - {element.active ? '✅ Active' : '❌ Inactive'}
-                        {element.description && <span>: {element.description}</span>}
-                    </li>
-                ))}
-            </ul>
-            {user.role === "GAME_MASTER" && (
-                <>
-                    <h2>Game Master</h2>
-                    <p>You are the game master of this session.</p>
-                    <h2>Users in this session ({usersInSession.length})</h2>
-                    <ul>
-                        {usersInSession.map((sessionUser) => (
-                            <li key={sessionUser.id}>
-                                {sessionUser.name} ({sessionUser.email})
-                                {/* Afficher les éléments de cet utilisateur */}
-                                <ul>
-                                    {gameSession.elements
-                                        .filter(el => el.userId === sessionUser.id)
-                                        .map((element) => (
-                                            <li key={element.id}>
-                                                {element.name} - {element.active ? '✅ Active' : '❌ Inactive'}
-                                            </li>
-                                        ))}
-                                </ul>
-                            </li>
-                        ))}
-                    </ul>
-                </>
-            )}
+            <h2>Hey {user.name.split(' ')[0]}! You have unlocked {userElements.length} elements</h2>
+            <GameSessionTableWrapper
+                users={usersInSession}
+                isLoggedIn={user.id}
+                allElements={gameSession.elements}
+                currentUserRole={user.role}
+                currentUserId={user.id}
+            />
 
-            <Card className='container border-dashed border-2 border-gray-300 rounded-xl p-4 bg-neutral-800'>
-                <CardHeader>
-
-                </CardHeader>
-                <CardContent>
-
+            <Card className='container border-dashed border-4 border-neutral-700 rounded-xl p-0 bg-transparent gap-0'>
+                {(isElementActive('header') || isElementActive('logo')) && (
+                    <CardHeader className='p-0 gap-0'>
+                        <HeaderGame
+                            isHeaderElement={isElementActive('header')}
+                            isLogoElement={isElementActive('logo')}
+                        />
+                    </CardHeader>
+                )}
+                <CardContent className='p-0'>
+                    {isElementActive('body') && <BodyGame />}
+                    {isElementActive('form') && <FormGame />}
                 </CardContent>
-                <CardFooter>
-
-                </CardFooter>
+                {isElementActive('footer') && (
+                    <CardFooter className='p-0'>
+                        <FooterGame />
+                    </CardFooter>
+                )}
             </Card>
         </div>
     )

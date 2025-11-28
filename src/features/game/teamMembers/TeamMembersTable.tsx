@@ -45,7 +45,7 @@ export default function TeamMembersTable({ teamMembers, isGameMaster }: TeamMemb
         <Table>
             <TableHeader>
                 <TableRow>
-                    <TableHead className="min-w-56">Nom</TableHead>
+                    <TableHead className="min-w-56">Name</TableHead>
                     <TableHead className="min-w-56">Email</TableHead>
                     <TableHead className="min-w-56">Role</TableHead>
                     {isGameMaster && <TableHead className="min-w-32">Actions</TableHead>}
@@ -74,7 +74,7 @@ export default function TeamMembersTable({ teamMembers, isGameMaster }: TeamMemb
             </TableBody>
             <TableFooter>
                 <TableRow>
-                    <TableCell colSpan={11} className="text-end">Total de l'équipe {teamMembers.length}</TableCell>
+                    <TableCell colSpan={11} className="text-end">Total of members: {teamMembers.length}</TableCell>
                 </TableRow>
             </TableFooter>
         </Table>

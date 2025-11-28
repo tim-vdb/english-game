@@ -59,41 +59,49 @@ export default function CreateTeam() {
     return (
         <>
             <Sheet open={open} onOpenChange={setOpen}>
-                <SheetTrigger className='flex items-center justify-center cursor-pointer gap-2 bg-neutral-800 text-white dark:bg-white dark:text-black rounded-md p-2'>
-                    <p className='dark:text-black'>Create Team</p>
-                    <Plus className='size-8 border-2 border-neutral-750 dark:border-neutral-200 dark:text-black p-1 rounded-md' />
+                <SheetTrigger asChild>
+                    <Button className='bg-[#ec672a] hover:bg-[#e85a2d] text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-300 flex items-center gap-2'>
+                        <Plus className='h-5 w-5' />
+                        Create Team
+                    </Button>
                 </SheetTrigger>
-                <SheetContent className={cn('animate-blurred-fade-in animate-duration-200 transition-all duration-300 ease-in-out', open ? 'translate-x-0' : 'translate-x-100')}>
+                <SheetContent className={cn('animate-blurred-fade-in animate-duration-200 transition-all duration-300 ease-in-out bg-[#f3f2e3]', open ? 'translate-x-0' : 'translate-x-100')}>
                     <SheetHeader>
-                        <SheetTitle>Create Team</SheetTitle>
+                        <SheetTitle className='font-cooper text-3xl text-[#7f2b13]'>Create Team</SheetTitle>
                     </SheetHeader>
-                    <SheetDescription className='mb-4'>
+                    <SheetDescription className='mb-4 font-inter text-gray-600'>
                         Create a new team to start playing with your friends.
                     </SheetDescription>
-                    <Card>
-                        <CardContent>
+                    <Card className='bg-white border-4 border-[#ec672a]'>
+                        <CardContent className='pt-6'>
                             <Form {...form}>
-                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                                    <div className='flex items-start flex-col gap-8'>
-
-                                        <FormField
-                                            control={form.control}
-                                            name="name"
-                                            render={({ field }) => (
-                                                <FormItem className='space-y-2'>
-                                                    <FormLabel>Name</FormLabel>
-                                                    <FormControl>
-                                                        <Input className='dark:text-white' placeholder="Team name" {...field} />
-                                                    </FormControl>
-                                                    <FormDescription>
-                                                        Name of the team.
-                                                    </FormDescription>
-                                                    <FormMessage />
-                                                </FormItem>
-                                            )}
-                                        />
-                                    </div>
-                                    <Button type="submit" className='w-full cursor-pointer'>Create Team</Button>
+                                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                                    <FormField
+                                        control={form.control}
+                                        name="name"
+                                        render={({ field }) => (
+                                            <FormItem className='space-y-2'>
+                                                <FormLabel className='font-inter text-[#7f2b13]'>Team Name</FormLabel>
+                                                <FormControl>
+                                                    <Input
+                                                        className='font-inter'
+                                                        placeholder="Enter team name"
+                                                        {...field}
+                                                    />
+                                                </FormControl>
+                                                <FormDescription className='font-inter text-sm'>
+                                                    Choose a unique name for your team.
+                                                </FormDescription>
+                                                <FormMessage />
+                                            </FormItem>
+                                        )}
+                                    />
+                                    <Button
+                                        type="submit"
+                                        className='w-full bg-[#ec672a] hover:bg-[#e85a2d] text-white font-bold py-3 rounded-lg transition-colors'
+                                    >
+                                        Create Team
+                                    </Button>
                                 </form>
                             </Form>
                         </CardContent>

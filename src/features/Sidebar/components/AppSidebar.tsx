@@ -1,6 +1,6 @@
 "use client"
 
-import { ArrowRight, Book, BookText, Calendar, Gamepad, Home, Inbox, Play, Search, Settings, Tally1, Users } from "lucide-react"
+import { ArrowRight, Book, BookOpen, BookText, Calendar, Gamepad, Home, Inbox, Play, Search, Settings, Tally1, Users } from "lucide-react"
 
 import {
     Sidebar,
@@ -31,7 +31,12 @@ const gameData = [
         icon: BookText,
     },
     {
-        title: "Play the game",
+        title: "Docs",
+        url: "/game/docs",
+        icon: BookOpen,
+    },
+    {
+        title: "Play Game",
         url: "/game/play",
         icon: Play,
     },
@@ -39,45 +44,70 @@ const gameData = [
 
 export function AppSidebar() {
     const pathname = usePathname();
-    const isActive = (path: string) => pathname === path;
+    const isActive = (path: string) => pathname === path || pathname.startsWith(path + '/');
 
     return (
         <Sidebar>
-            <SidebarContent className="w-[16rem] py-4 bg-neutral-100 dark:bg-neutral-700">
+            <SidebarContent className="w-[16rem] py-4 bg-[#f3f2e3] border-r-2 border-[#7f2b13]">
                 <SidebarGroup>
-                    <SidebarGroupLabel className="flex items-center gap-2 text-lg font-medium border-b-2 border-neutral-300 dark:border-neutral-600 pb-2 rounded-none">
-                        <Settings />
+                    <SidebarGroupLabel className="flex items-center gap-2 text-lg font-cooper text-[#7f2b13] border-b-4 border-[#ec672a] pb-3 rounded-none">
+                        <Settings className="h-5 w-5 text-[#ec672a]" />
                         Settings
                     </SidebarGroupLabel>
-                    <SidebarGroupContent className="mb-4">
+                    <SidebarGroupContent className="mb-6">
                         <SidebarMenu>
                             {settingsData.map((item: any) => (
                                 <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton className="mt-2" asChild>
-                                        <a href={item.url} >
-                                            < item.icon />
-                                            <span>{item.title}</span>
-                                            {
-                                                isActive(item.url) && <Tally1 className="w-6 h-6 text-[#ec672a]" />
-                                            }
+                                    <SidebarMenuButton
+                                        className={cn(
+                                            "mt-2 font-inter text-[#7f2b13] transition-all duration-200",
+                                            isActive(item.url)
+                                                ? "bg-[#ec672a] text-white hover:bg-[#e85a2d]"
+                                                : "hover:bg-white/50 hover:text-[#ec672a]"
+                                        )}
+                                        asChild
+                                    >
+                                        <a href={item.url}>
+                                            <item.icon className={cn(
+                                                "h-4 w-4",
+                                                isActive(item.url) ? "text-white" : "text-[#ec672a]"
+                                            )} />
+                                            <span >{item.title}</span>
+                                            {isActive(item.url) && (
+                                                <Tally1 className="w-5 h-5 text-white ml-auto" />
+                                            )}
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
                             ))}
                         </SidebarMenu>
                     </SidebarGroupContent>
-                    <SidebarGroupLabel className="flex items-center gap-2 text-lg font-medium border-b-2 border-neutral-300 dark:border-neutral-600 pb-2 rounded-none">
-                        <Gamepad />
+                    <SidebarGroupLabel className="flex items-center gap-2 text-lg font-cooper text-[#7f2b13] border-b-4 border-[#ec672a] pb-3 rounded-none">
+                        <Gamepad className="h-5 w-5 text-[#ec672a]" />
                         Game
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
                             {gameData.map((item: any) => (
-                                <SidebarMenuItem className="text-sm font-medium" key={item.title}>
-                                    <SidebarMenuButton className="mt-2" asChild>
+                                <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuButton
+                                        className={cn(
+                                            "mt-2 font-inter text-[#7f2b13] transition-all duration-200",
+                                            isActive(item.url)
+                                                ? "bg-[#ec672a] text-white hover:bg-[#e85a2d]"
+                                                : "hover:bg-white/50 hover:text-[#ec672a]"
+                                        )}
+                                        asChild
+                                    >
                                         <a href={item.url}>
-                                            <item.icon />
+                                            <item.icon className={cn(
+                                                "h-4 w-4",
+                                                isActive(item.url) ? "text-white" : "text-[#ec672a]"
+                                            )} />
                                             <span>{item.title}</span>
+                                            {isActive(item.url) && (
+                                                <Tally1 className="w-5 h-5 text-white ml-auto" />
+                                            )}
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
@@ -86,6 +116,6 @@ export function AppSidebar() {
                     </SidebarGroupContent>
                 </SidebarGroup>
             </SidebarContent>
-        </Sidebar >
+        </Sidebar>
     )
 }   
