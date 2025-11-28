@@ -20,7 +20,7 @@ export default function LogOut() {
                 className="cursor-pointer w-full text-left py-1.5 px-2"
                 disabled={isPending}
             >
-                {isPending ? "Déconnexion..." : "Se déconnecter"}
+                {isPending ? "Logging out..." : "Logout"}
             </button>
         </form>
     );

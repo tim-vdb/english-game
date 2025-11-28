@@ -26,7 +26,7 @@ export default async function JoinTeamButton({
         });
 
         if (!invite || invite.used || invite.expiresAt < new Date()) {
-            throw new Error("Lien invalide ou expiré");
+            throw new Error("Invalid or expired link");
         }
 
         // Créer le membre
@@ -50,7 +50,7 @@ export default async function JoinTeamButton({
     return (
         <form action={joinTeam}>
             <button type="submit" className="mt-6 px-6 py-3 bg-black text-white rounded-lg">
-                Rejoindre l'équipe
+                Join the team
             </button>
         </form>
     );

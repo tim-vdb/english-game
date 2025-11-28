@@ -22,7 +22,7 @@ export default async function InvitePage({
     });
 
     if (!invite || invite.expiresAt < new Date() || invite.used) {
-        return <div>Lien d'invitation invalide ou expiré</div>;
+        return <div className="min-h-screen flex items-center justify-center">Lien d'invitation invalide ou expiré</div>;
     }
 
     // Vérifier si l'utilisateur fait déjà partie de l'équipe
@@ -38,8 +38,8 @@ export default async function InvitePage({
     }
 
     return (
-        <div className="max-w-md mx-auto mt-20 p-8 border rounded-lg">
-            <h1 className="text-2xl font-bold">Rejoindre l'équipe</h1>
+        <div className="min-h-screen flex items-center justify-center max-w-md mx-auto mt-20 p-8 border rounded-lg">
+            <h1 className="text-2xl font-bold">Join the team</h1>
             <p className="mt-4">
                 Vous avez été invité à rejoindre <strong>{invite.team.name}</strong>.
             </p>

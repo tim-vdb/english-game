@@ -26,6 +26,11 @@ export default function ProfileAccount() {
 
     return (
         <>
+            {(user?.role === "MEMBER" || user?.role === "GAME_MASTER" || user?.role === "ADMIN") && (
+                <Button variant={"default"} className="cursor-pointer bg-[#ec672a] hover:bg-[#e85a2d] text-white" asChild>
+                    <Link href={"/game/play"}>Play Game</Link>
+                </Button>
+            )}
             {userName ? (
                 <DropdownMenu>
                     <DropdownMenuTrigger className="cursor-pointer">
@@ -72,14 +77,14 @@ export default function ProfileAccount() {
                     {pathname !== "/login" && (
                         <Button variant={"default"} asChild>
                             <Link href="/login" className="truncate">
-                                Connexion
+                                Login
                             </Link>
                         </Button>
                     )}
                     {pathname === "/login" && (
                         <Button variant={"default"} className="" asChild>
                             <Link href="/sign-up" className="truncate">
-                                Inscription
+                                Sign Up
                             </Link>
                         </Button>
                     )}

@@ -22,10 +22,10 @@ export default function FormGame() {
   };
 
   return (
-    <div className="w-full max-w-md mx-auto p-4">
+    <div className="w-full max-w-md mx-auto py-20">
       {/* CARD WRAPPER - Fond marron comme la carte */}
       <div className="bg-[#7f2b13] rounded-2xl p-8 shadow-2xl">
-        
+
         {/* TITLE */}
         <div className="mb-8">
           <h2 className="text-white font-bold text-3xl uppercase tracking-wider">
@@ -35,10 +35,10 @@ export default function FormGame() {
 
         {/* FORM */}
         <div className="space-y-6">
-          
+
           {/* NAME FIELD */}
           <div className="space-y-2">
-            <label 
+            <label
               htmlFor="name"
               className="block text-white font-bold text-sm uppercase tracking-widest"
             >
@@ -59,7 +59,7 @@ export default function FormGame() {
 
           {/* BIRTHDATE FIELD */}
           <div className="space-y-2">
-            <label 
+            <label
               htmlFor="birthdate"
               className="block text-white font-bold text-sm uppercase tracking-widest"
             >
@@ -80,7 +80,7 @@ export default function FormGame() {
 
           {/* EMAIL FIELD */}
           <div className="space-y-2">
-            <label 
+            <label
               htmlFor="email"
               className="block text-white font-bold text-sm uppercase tracking-widest"
             >
@@ -142,7 +142,7 @@ export function FormGameExtended() {
   return (
     <div className="w-full max-w-lg mx-auto p-4">
       <div className="bg-[#7f2b13] rounded-2xl p-8 shadow-2xl border-4 border-[#ec672a]">
-        
+
         <div className="mb-8 text-center">
           <h2 className="text-white font-bold text-4xl uppercase tracking-wider mb-2">
             Formulaire
@@ -151,7 +151,7 @@ export function FormGameExtended() {
         </div>
 
         <div className="space-y-6">
-          
+
           <div className="space-y-2">
             <label className="block text-white font-bold text-sm uppercase tracking-widest">
               Name
@@ -246,13 +246,13 @@ export function FormGameMinimal() {
   return (
     <div className="w-full max-w-sm mx-auto">
       <div className="bg-[#7f2b13] rounded-lg p-6 shadow-xl">
-        
+
         <h2 className="text-white font-bold text-2xl uppercase mb-6">
           Formulaire
         </h2>
 
         <div className="space-y-5">
-          
+
           <div>
             <label className="block text-white text-xs uppercase tracking-widest mb-2">
               Name
