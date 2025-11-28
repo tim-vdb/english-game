@@ -14,9 +14,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "CHROM - Mölkky",
-  description: "Club Rhodanien de Mölkky",
+  title: "Chef's Blueprint",
+  description: "The narrative card game that teaches you to design the complete wireframe for a restaurant's website. Play, solve the riddles, and deliver the finalized model to the developer",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
+
 
 export default function RootLayout({
   children,

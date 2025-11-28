@@ -57,6 +57,7 @@ export default function LoginForm() {
       } else {
         router.push("/");
       }
+      router.refresh();
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : "Une erreur est survenue";
       toast.error(errorMessage);
@@ -67,11 +68,11 @@ export default function LoginForm() {
 
   return (
     <>
-    
+
       <div className="min-h-screen flex items-center justify-center px-4 py-12">
         <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 w-full max-w-md shadow-lg mb-24">
           <div className="text-center mb-8">
-            
+
             <p className="text-xs uppercase tracking-[0.25em] text-[#cb3005] font-inter">
               Login
             </p>
@@ -186,22 +187,22 @@ export default function LoginForm() {
                 Sign in with Google
               </Button>
               <CardFooter>
-        <div className="flex justify-center w-full py-4">
-          <p className="text-center text-xs text-neutral-500">
-            <Link href="/sign-up" className="underline">
-              <span className="dark:text-orange-200/90">
-                Need an account?
-              </span>
-            </Link>
-          </p>
-        </div>
-      </CardFooter>
-              
+                <div className="flex justify-center w-full py-4">
+                  <p className="text-center text-xs text-neutral-500">
+                    <Link href="/sign-up" className="underline">
+                      <span className="dark:text-orange-200/90">
+                        Need an account?
+                      </span>
+                    </Link>
+                  </p>
+                </div>
+              </CardFooter>
+
             </form>
           </Form>
         </div>
       </div>
-    
+
     </>
   );
 }

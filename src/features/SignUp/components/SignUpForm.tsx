@@ -22,16 +22,16 @@ import Image from "next/image";
 
 const SignUpFormSchema = z
   .object({
-    firstName: z.string().min(1, "Le prénom est obligatoire"),
-    lastName: z.string().min(1, "Le nom est obligatoire"),
+    firstName: z.string().min(1, "The first name is required"),
+    lastName: z.string().min(1, "The last name is required"),
     email: z.string().email("Email invalide"),
     password: z
       .string()
-      .min(6, "Le mot de passe doit contenir au moins 6 caractères"),
+      .min(6, "The password must contain at least 6 characters"),
     passwordConfirmation: z.string().min(6, "La confirmation est obligatoire"),
   })
   .refine((data) => data.password === data.passwordConfirmation, {
-    message: "Les mots de passe ne correspondent pas",
+    message: "The passwords do not match",
     path: ["passwordConfirmation"],
   });
 
@@ -72,11 +72,12 @@ export default function SignUpForm() {
         image: image ? await convertImageToBase64(image) : "",
         callbackURL: "/",
       });
-      toast.success("Utilisateur inscrit avec succès");
+      toast.success("User created successfully");
       router.push("/");
+      router.refresh();
     } catch (error) {
       const errorMessage =
-        error instanceof Error ? error.message : "Une erreur est survenue";
+        error instanceof Error ? error.message : "An error occurred";
       toast.error(errorMessage);
     } finally {
       setLoading(false);

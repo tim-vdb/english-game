@@ -11,8 +11,11 @@ import { UserProvider } from "@/context/UserContext";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 
 export const metadata: Metadata = {
-  title: "Boilerplate",
-  description: "Boilerplate Next.js 16",
+  title: "Chef's Blueprint",
+  description: "The narrative card game that teaches you to design the complete wireframe for a restaurant's website. Play, solve the riddles, and deliver the finalized model to the developer",
+  icons: {
+    icon: "/logo.svg",
+  },
 };
 
 export default async function SiteLayout({
