@@ -11,6 +11,11 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     authInterrupts: true,
+    // Include Prisma generated files in the build output
+    outputFileTracingIncludes: {
+      '/api/**/*': ['./src/generated/**/*'],
+      '/*': ['./src/generated/**/*'],
+    },
   },
 };
 
