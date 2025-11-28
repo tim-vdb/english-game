@@ -4,7 +4,7 @@ import { getUser } from "@/lib/auth-session";
 import { prisma } from "@/lib/prisma";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { Play, Users, Calendar, Trophy, ArrowRight, Sparkles, Clock } from "lucide-react";
+import { Play, Users, Trophy, ArrowRight, Sparkles, Clock } from "lucide-react";
 
 export default async function GamePlayPage() {
     const user = await getUser();

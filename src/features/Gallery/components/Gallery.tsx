@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { X } from 'lucide-react';
@@ -29,15 +29,27 @@ export default function Gallery({ images }: GalerieProps) {
     const pathname = usePathname();
     const router = useRouter();
 
+    // Gérer le style overflow du body quand une image est sélectionnée
+    useEffect(() => {
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+        // Cleanup: restaurer l'overflow quand le composant se démonte
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [selectedImage]);
+
     // Fonction pour ouvrir l'image
     const openFullscreen = (image: GalleryImage) => {
         setSelectedImage(image);
-        document.body.style.overflow = 'hidden';
     };
 
     const closeFullscreen = () => {
         setSelectedImage(null);
-        document.body.style.overflow = 'auto';
     };
 
     return (

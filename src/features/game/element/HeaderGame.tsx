@@ -1,6 +1,5 @@
 'use client';
 
-import React from 'react';
 import Image from 'next/image';
 import { User } from 'lucide-react';
 
@@ -14,10 +13,6 @@ interface HeaderProps {
 }
 
 export default function HeaderGame({
-  GAME_NAME = "Chef's Blueprint",
-  timeRemaining,
-  currentLevel,
-  playersCount,
   isLogoElement = false,
   isHeaderElement = false
 }: HeaderProps) {

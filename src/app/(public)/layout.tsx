@@ -10,16 +10,6 @@ import { ThemeProvider } from "next-themes";
 import { UserProvider } from "@/context/UserContext";
 import { PublicLayout } from "@/components/layout/PublicLayout";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
   title: "Boilerplate",
   description: "Boilerplate Next.js 16",

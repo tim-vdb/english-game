@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/prisma';
 import { notFound, redirect } from 'next/navigation';
-import React from 'react'
 import { getUser } from '@/lib/auth-session';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -9,7 +8,6 @@ import HeaderGame from '@/features/game/element/HeaderGame';
 import BodyGame from '@/features/game/element/BodyGame';
 import FooterGame from '@/features/game/element/FouterGame';
 import FormGame from '@/features/game/element/FormGame';
-import LogoGame from '@/features/game/element/LogoGame';
 import GameSessionTableWrapper from '@/features/game/element/GameSessionTableWrapper';
 
 const DEFAULT_ELEMENTS = [

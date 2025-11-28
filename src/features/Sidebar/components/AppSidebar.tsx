@@ -56,7 +56,7 @@ export function AppSidebar() {
                     </SidebarGroupLabel>
                     <SidebarGroupContent className="mb-6">
                         <SidebarMenu>
-                            {settingsData.map((item: any) => (
+                            {settingsData.map((item: typeof settingsData[0]) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton
                                         className={cn(
@@ -88,7 +88,7 @@ export function AppSidebar() {
                     </SidebarGroupLabel>
                     <SidebarGroupContent>
                         <SidebarMenu>
-                            {gameData.map((item: any) => (
+                            {gameData.map((item: typeof gameData[0]) => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton
                                         className={cn(

@@ -7,7 +7,7 @@ interface ComponentCardProps {
   height?: number;
 }
 
-export default function ComponentCard({ name, src, width = 200, height = 100 }: ComponentCardProps) {
+export default function ComponentCard({ name }: ComponentCardProps) {
   return (
     <div className="inline-block relative rounded-lg overflow-visible shadow-lg p-2 cursor-pointer">
       <Image

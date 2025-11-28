@@ -2,11 +2,9 @@ import { prisma } from "@/lib/prisma";
 import { notFound, redirect } from "next/navigation";
 import TeamMembersTable from "@/features/game/teamMembers/TeamMembersTable";
 import { GetTeamMembersAction } from "@/features/game/teamMembers/teamMembers.action";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import CreateButtonInvite from "@/features/game/teamInvites/create/CreateButtonInvite";
 import { getUser } from "@/lib/auth-session";
-import { Users, Calendar, Crown, Link2, Play, ArrowLeft } from "lucide-react";
+import { Users, Crown, Link2, ArrowLeft } from "lucide-react";
 import Link from "next/link";
 
 export default async function TeamPage({ params }: { params: { id: string } }) {

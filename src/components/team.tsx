@@ -1,5 +1,6 @@
 import { cn } from '@/lib/utils'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const LinkedInIcon = () => (
     <svg
@@ -72,7 +73,7 @@ export default function TeamSection() {
                                             : ''
                                     )}
                                 >
-                                    <img
+                                    <Image
                                         className={cn(
                                             "h-96 w-full object-cover object-top grayscale transition-all duration-500 group-hover/image:grayscale-0 group-hover/image:h-90 rounded-md",
                                             member.name === 'Timothée VAN DEN BOSCH' && 'translate-y-16 -translate-x-2 rounded-none',
