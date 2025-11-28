@@ -6,7 +6,7 @@
     "dev": "next dev --turbopack",
     "postinstall": "npx prisma generate --schema=src/prisma/schema.prisma",
     "prebuild": "npx prisma generate --schema=src/prisma/schema.prisma",
-    "build": "npx prisma generate --schema=src/prisma/schema.prisma && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
