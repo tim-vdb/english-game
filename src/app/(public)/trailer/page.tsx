@@ -25,7 +25,7 @@ export default function TrailersPage() {
         <div className="bg-white border-4 border-[#ec672a] rounded-[1.5rem] p-10 shadow-md">
           <div className="aspect-video w-full rounded-xl overflow-hidden">
             <iframe
-              src="https://www.youtube.com/embed/DfYlVkFJdnI"
+              src="/video.mp4"
               title="Chef's Blueprint Trailer"
               className="w-full h-full"
               allowFullScreen

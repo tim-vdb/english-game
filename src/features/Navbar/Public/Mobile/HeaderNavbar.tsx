@@ -64,14 +64,24 @@ export default function MobileNavbar({
           Contact Us
         </Link>
         <Link
-          href="/team"
+          href="/design"
           onClick={() => setMenuOpen(false)}
           className={cn(
             linksClasses.base,
-            isActive("/team") ? linksClasses.isActive : linksClasses.notActive
+            isActive("/design") ? linksClasses.isActive : linksClasses.notActive
           )}
         >
-          Our Team
+          Game Design
+        </Link>
+        <Link
+          href="/trailer"
+          onClick={() => setMenuOpen(false)}
+          className={cn(
+            linksClasses.base,
+            isActive("/trailer") ? linksClasses.isActive : linksClasses.notActive
+          )}
+        >
+          Video Trailer
         </Link>
       </div>
     </nav>
