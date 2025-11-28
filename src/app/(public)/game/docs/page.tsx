@@ -1,6 +1,6 @@
 "use client";
 
-import { BookOpen, Layout, Layers, Palette, FileText, Grid, Code, Sparkles } from "lucide-react";
+import { BookOpen, Layout, Layers, Palette } from "lucide-react";
 
 export default function DocsPage() {
     return (

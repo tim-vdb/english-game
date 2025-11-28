@@ -1,8 +1,9 @@
 import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group'
+import { Blog } from '@/generated/prisma_client'
 import { Search } from 'lucide-react'
 import React from 'react'
 
-export default function SearchBar({ search, setSearch, filteredData }: { search: string, setSearch: (value: string) => void, filteredData: any[] }) {
+export default function SearchBar({ search, setSearch, filteredData }: { search: string, setSearch: (value: string) => void, filteredData: Blog[] }) {
     return (
         <>
             <InputGroup className='max-w-sm'>

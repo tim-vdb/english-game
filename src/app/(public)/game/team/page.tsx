@@ -1,6 +1,5 @@
 import CreateTeam from '@/features/game/team/create/components/CreateTeam'
 import GetTeams from '@/features/game/team/getTeams/getTeams'
-import { Users, Plus } from 'lucide-react'
 
 export default function page() {
     return (

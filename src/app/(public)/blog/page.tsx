@@ -1,7 +1,6 @@
 
 import { getUser } from '@/lib/auth-session';
 import { prisma } from '@/lib/prisma';
-import { BlogCard } from '@/features/Blog/GetBlog/components/BlogCard';
 import Filter from '@/features/Filter/components/Filter';
 
 export default async function page() {

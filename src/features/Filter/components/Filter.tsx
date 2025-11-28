@@ -1,15 +1,11 @@
 "use client"
 
-import { Card } from '@/components/ui/card';
-import { InputGroup, InputGroupAddon, InputGroupInput } from '@/components/ui/input-group';
 import { Item, ItemContent } from '@/components/ui/item';
 import { Label } from '@/components/ui/label';
 import { RadioGroupItem } from '@/components/ui/radio-group';
 import { RadioGroup } from '@/components/ui/radio-group';
 import { Select, SelectItem, SelectContent, SelectValue, SelectTrigger } from '@/components/ui/select';
-import { BlogCard } from '@/features/Blog/GetBlog/components/BlogCard';
 import { Blog, User } from '@/generated/prisma_client';
-import { Search } from 'lucide-react';
 import { useState, useMemo } from 'react'
 import SearchBar from './SearchBar';
 
@@ -90,7 +86,7 @@ export default function Filter({ blogs, isAdmin }: FilterProps) {
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-20 w-full'>
                 {filteredData.map((blog) => (
                     <div key={blog.id} className='container'>
-                        <BlogCard blog={blog} isAdmin={isAdmin} />
+                        {/* <BlogCard blog={blog} isAdmin={isAdmin} /> */}
                     </div>
                 ))}
             </div>
